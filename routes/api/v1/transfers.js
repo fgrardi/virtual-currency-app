@@ -26,3 +26,5 @@ router.get("/:id", (req, res) => {
         "data": "data of one transfer"
     })
 });
+
+module.exports = router;
