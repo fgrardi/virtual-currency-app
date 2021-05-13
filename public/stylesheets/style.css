@@ -1,8 +1,112 @@
+:root {
+  --backgroundColor: #e9e9e9;
+  --boxColor: #fff;
+  --river: #0A2044;
+  --buttonBlue: #1D32F3;
+  --blueZodiac: #163c79;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: var(--backgroundColor);
 }
 
 a {
   color: #00B7FF;
+}
+
+/*  BALANCE TRANSACTIONS */
+
+.transactions__head{
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  color: var(--river);
+}
+
+.balance__currentBalance{
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+  color: var(--river);
+}
+
+.balance__head{
+  font-size: 1em;
+  text-align: center;
+}
+
+.balance__box{
+  background-color: var(--boxColor);
+  padding: 4em;
+  border-radius: 10px;
+  margin: 3em 0em;
+}
+
+.transactions__box{
+  background-color: var(--boxColor);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0.5em 0;
+}
+
+.balance__transactions{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 3em;
+  border-bottom: 0.5px solid var(--river);
+}
+
+.transactions__name{
+  
+  font-weight: bold;
+  color: var(--river);
+  font-size: 1em;
+}
+
+.transactions__date{
+  font-size: 1em;
+  display: flex;
+  
+}
+
+.transactions__amount {
+  
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* NAVBAR */
+
+.navbar {
+  height: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  filter: drop-shadow(0px 4px 8px rgb(0,0,0,0.25));
+}
+
+.navbar__btn {
+  font-size: 12px;
+  color: white;
+  background-color: var(--river);
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 60px;
+  transition: 0.1s ease-in-out;
+}
+.navbar__btn:hover {
+  background-color: var(--blueZodiac);
+  transform: scale(1.1);
 }
