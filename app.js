@@ -8,6 +8,9 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiRouterTransfers = require('./routes/api/v1/transaction');
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/cryptoapp', {useNewUrlParser: true, useUnifiedTopology: true});
+
 const app = express();
 const cors = require('cors');
 
