@@ -1,4 +1,4 @@
-const create = (req, res) => {
+const createNewTransaction = (req, res) => {
     res.json({
         "status": "success",
         "data": {
@@ -7,7 +7,7 @@ const create = (req, res) => {
     })
 };
 
-const getAll = (req, res) => {
+const getTransactions = (req, res) => {
     res.json({
         "status": "success",
         "data": {
@@ -16,13 +16,13 @@ const getAll = (req, res) => {
     })
 };
 
-const getId = (req, res) => {
+const getTransactionById = (req, res) => {
     res.json({
         "status": "success",
         "data": "data of one transfer"
     })
 };
 
-module.exports.create = create;
-module.exports.getAll = getAll;
-module.exports.getId = getId;
+module.exports.createNewTransaction = createNewTransaction;
+module.exports.getTransactions = getTransactions;
+module.exports.getTransactionById = getTransactionById;
