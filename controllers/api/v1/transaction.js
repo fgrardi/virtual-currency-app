@@ -20,6 +20,14 @@ const getTransactionById = (req, res) => {
     })
 };
 
+const getLeaderboard = (req, res) => {
+    res.json({
+        "status": "succes",
+        "message": "GETTING coins of user"
+    })
+}
+
 module.exports.createNewTransaction = createNewTransaction;
 module.exports.getTransactions = getTransactions;
 module.exports.getTransactionById = getTransactionById;
+module.exports.getLeaderboard = getLeaderboard;
