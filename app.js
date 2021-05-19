@@ -9,11 +9,13 @@ const usersRouter = require('./routes/users');
 const apiRouterTransfers = require('./routes/api/v1/transfers');
 
 const app = express();
+const cors = require('cors');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(cors()); //setup cors
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
