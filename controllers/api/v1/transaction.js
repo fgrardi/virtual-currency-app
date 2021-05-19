@@ -4,13 +4,13 @@ const createNewTransaction = (req, res) => {
     let transaction = new Transaction();
 
     transaction.text = "message";
-    transaction.amount = "40";
+    transaction.amount = 40;
     transaction.user = "fgrardi";
     transaction.recipient = "jgrardi";
     transaction.reason = "dev help";
     transaction.completed = false;
     transaction.save((err, doc) => {
-        if(!err) {
+        if (!err) {
             res.json({
                 "status": "success",
                 "data": {
@@ -22,9 +22,21 @@ const createNewTransaction = (req, res) => {
 };
 
 const getTransactions = (req, res) => {
-    res.json({
-        "status": "success",
-        "message": "GETTING all transactions of user"
+    Transaction.find({"user": "fgrardi"}, (err, docs) => {
+        if (!err) {
+            res.json({
+                "status": "success",
+                "data": {
+                    "transactions": docs
+                }
+            })
+        }
+        else {
+            res.json({
+                "status": "error",
+                "message": "couldn't load transactions"
+            })
+        }
     })
 };
 
