@@ -1,25 +1,22 @@
 const createNewTransaction = (req, res) => {
     res.json({
         "status": "success",
-        "data": {
-            "transfer": {"transaction": "Add coins to database"}
-        } 
+        "message": "POSTING new transaction"
     })
 };
 
 const getTransactions = (req, res) => {
     res.json({
         "status": "success",
-        "data": {
-            "transfers": [] //empty array of transfers
-        }
+        "message": "GETTING all transactions of user"
     })
 };
 
 const getTransactionById = (req, res) => {
+    let id = req.params.id;
     res.json({
         "status": "success",
-        "data": "data of one transfer"
+        "message": `GETTING transaction with id ${id}`
     })
 };
 
