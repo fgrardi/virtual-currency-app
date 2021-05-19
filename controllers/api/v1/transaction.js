@@ -1,9 +1,23 @@
 const Transaction = require('../../../models/Transactions')
 
 const createNewTransaction = (req, res) => {
-    res.json({
-        "status": "success",
-        "message": "POSTING new transaction"
+    let transaction = new Transaction();
+
+    transaction.text = "message";
+    transaction.amount = "40";
+    transaction.user = "fgrardi";
+    transaction.recipient = "jgrardi";
+    transaction.reason = "dev help";
+    transaction.completed = false;
+    transaction.save((err, doc) => {
+        if(!err) {
+            res.json({
+                "status": "success",
+                "data": {
+                    "transaction" : doc
+                }
+            })
+        }
     })
 };
 
