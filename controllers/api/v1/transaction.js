@@ -1,3 +1,5 @@
+const Transaction = require('../../../models/Transactions')
+
 const createNewTransaction = (req, res) => {
     res.json({
         "status": "success",
