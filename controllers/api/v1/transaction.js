@@ -3,12 +3,13 @@ const Transaction = require('../../../models/Transactions')
 const createNewTransaction = (req, res) => {
     let transaction = new Transaction();
 
-    transaction.text = "message";
-    transaction.amount = 40;
-    transaction.user = "fgrardi";
-    transaction.recipient = "jgrardi";
-    transaction.reason = "dev help";
-    transaction.completed = false;
+    transaction.text = req.body.text;
+    transaction.amount = req.body.amount;
+    transaction.user = req.body.user;
+    transaction.recipient = req.body.recipient;
+    transaction.reason = req.body.reason;
+    transaction.completed = req.body.completed;
+    
     transaction.save((err, doc) => {
         if (!err) {
             res.json({
@@ -34,7 +35,7 @@ const getTransactions = (req, res) => {
         else {
             res.json({
                 "status": "error",
-                "message": "couldn't load transactions"
+                "message": "couldn't save this transaction"
             })
         }
     })
