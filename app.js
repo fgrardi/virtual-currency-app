@@ -6,14 +6,20 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const apiRouterTransfers = require('./routes/api/v1/transfers');
+const apiRouterTransfers = require('./routes/api/v1/transaction');
+
+const mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
+mongoose.connect('mongodb://localhost:27017/cryptoapp', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const app = express();
+const cors = require('cors');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(cors()); //setup cors
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api/v1/transfers', apiRouterTransfers);
+app.use('/api/v1/transaction', apiRouterTransfers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
