@@ -1,0 +1,60 @@
+@use '../src/colors';
+
+.transactions--head{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: colors.$river;
+  }
+  
+  .balance--currentBalance{
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    color: colors.$river;
+  }
+  
+  .balance--head{
+    font-size: 1em;
+    text-align: center;
+  }
+  
+  .balance--box{
+    background-color: colors.$boxColor;
+    padding: 4em;
+    border-radius: 10px;
+    margin: 3em 0em;
+  }
+  
+  .transactions--box{
+    background-color: colors.$boxColor;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0.5em 0;
+  }
+  
+  .balance--transactions{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 3em;
+    border-bottom: 0.5px solid colors.$river;
+  }
+  
+  .transactions--name{
+    
+    font-weight: bold;
+    color: colors.$river;
+    font-size: 1em;
+  }
+  
+  .transactions--date{
+    font-size: 1em;
+    display: flex;
+    
+  }
+  
+  .transactions--amount {
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }

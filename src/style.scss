@@ -1,0 +1,10 @@
+@use 'colors';
+@import 'navbar';
+@import 'transactions';
+
+
+  body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: colors.$backgroundColor;
+  }
