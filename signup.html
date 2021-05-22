@@ -10,16 +10,27 @@
 <body>
     <div>
         <h1>Register</h1>
-        <div class="alert hidden">Something went wrong!</div>
+        <div class="alert__fail hidden">Something went wrong!</div>
+        <div class="alert__email hidden">Something went wrong!</div>
     <div class="signup">
         <div>
             <label for="email">Email</label>
-            <input type="text" class="input__text" name="email" id="email">
+            <input type="text" class="input--text" name="email" id="email">
+        </div>
+
+        <div>
+            <label for="firstname">First Name</label>
+            <input type="text" class="input--text" name="firstname" id="firstname">
+        </div>
+
+        <div>
+            <label for="lastname">Last Name</label>
+            <input type="text" class="input--text" name="lastname" id="lastname">
         </div>
 
         <div>
             <label for="password">Password</label>
-            <input type="text" class="input__text" name="password" id="password">
+            <input type="text" class="input--text" name="password" id="password">
         </div>
         <button class="btn btn--primary login__btn">Register</button>
     </div>
