@@ -1,8 +1,8 @@
-var btnLogin = document.querySelector(".login button").addEventListener("click", (e) => {
+var btnSignup = document.querySelector(".signup button").addEventListener("click", (e) => {
 let email = document.querySelector('#email').value;
 let password = document.querySelector('#password').value;
 
-    fetch('http://localhost:3000/users/login', {
+    fetch('http://localhost:3000/users/signup', {
         method: "post",
         headers: {
             'Content-Type': 'application/json'
@@ -15,12 +15,8 @@ let password = document.querySelector('#password').value;
         return response.json();
     }).then(json => {
         if (json.status === "success") {
-            let token = json.data.token;
-            localStorage.setItem("token", token);
-            window.location.href = "index.html";
-        } else {
             let feedback = document.querySelector(".alert");
-            feedback.textContent = "Login failed buddy.";
+            feedback.textContent = "Sign up complete!";
             feedback.classList.remove('hidden');
         }
     })
