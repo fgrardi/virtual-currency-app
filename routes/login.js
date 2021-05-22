@@ -20,7 +20,7 @@ let password = document.querySelector('#password').value;
             window.location.href = "index.html";
         } else {
             let feedback = document.querySelector(".alert");
-            feedback.textContent = "Login failed buddy.";
+            feedback.textContent = "Login failed.";
             feedback.classList.remove('hidden');
         }
     })

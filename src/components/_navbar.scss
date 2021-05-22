@@ -1,5 +1,5 @@
-@use 'colors';
-@import 'components/btn';
+@use '../colors';
+@import 'btn';
 
 .navbar {
     height: 50px;
@@ -29,5 +29,5 @@
   }
   .navbar--btn:hover {
     background-color: colors.$blueZodiac;
-    transform: scale(1.1);
+    transform: translateY(2px);
   }

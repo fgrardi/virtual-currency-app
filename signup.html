@@ -4,39 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/stylesheets/reset.css">
     <link rel="stylesheet" href="public/stylesheets/style.css">
-    <title>Document</title>
+    <title>Signup</title>
 </head>
 <body>
+    <h1 class="heading">Virtual Pay</h1>
+    <img class="login--illustration" src="src/images/login.png" alt="">
+
     <div>
-        <h1>Register</h1>
-        <div class="alert__fail hidden">Something went wrong!</div>
-        <div class="alert__email hidden">Something went wrong!</div>
+        <h1 class="heading heading--primary">Register</h1>
+        <div class="alert alert__fail hidden">Something went wrong!</div>
+        <div class="alert alert__email hidden">Something went wrong!</div>
     <div class="signup">
         <div>
-            <label for="email">Email</label>
-            <input type="text" class="input--text" name="email" id="email">
+            <input type="text" placeholder="Email" class="input--text" name="email" id="email">
         </div>
 
         <div>
-            <label for="firstname">First Name</label>
-            <input type="text" class="input--text" name="firstname" id="firstname">
+            <input type="text" placeholder="First name" class="input--text" name="firstname" id="firstname">
         </div>
 
         <div>
-            <label for="lastname">Last Name</label>
-            <input type="text" class="input--text" name="lastname" id="lastname">
+            <input type="text" placeholder="Last name" class="input--text" name="lastname" id="lastname">
         </div>
 
         <div>
-            <label for="password">Password</label>
-            <input type="text" class="input--text" name="password" id="password">
+            <input type="text" placeholder="Password" class="input--text" name="password" id="password">
         </div>
         <button class="btn btn--primary login__btn">Register</button>
     </div>
 </div>
 
-<a href="login.html">login</a>
+<span>I already have an account. <a class="form--link" href="login.html">Log in</a></span>
+
+<nav class="navbar">
+    <a class="navbar--btn" href="index.html">Home</a>
+    <a class="navbar--btn" href="">Send</a>
+    <a class="navbar--btn" href="">User</a>
+</nav>
 
 <script src="routes/signup.js"></script>
 

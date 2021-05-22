@@ -1,60 +1,60 @@
-@use '../src/colors';
+@use '../colors';
+@use  '../padding';
+@use '../font';
 
 .transactions--head{
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 1.2em;
+    font-size: font.$medium;
     color: colors.$river;
   }
   
   .balance--currentBalance{
-    font-size: 2.5em;
+    font-size: font.$xxl;
     font-weight: bold;
     text-align: center;
     color: colors.$river;
   }
   
   .balance--head{
-    font-size: 1em;
     text-align: center;
   }
   
   .balance--box{
     background-color: colors.$boxColor;
-    padding: 4em;
-    border-radius: 10px;
-    margin: 3em 0em;
+    padding: padding.$xxl;
+    border-radius: padding.$small;
+    margin: padding.$xl 0;
   }
   
   .transactions--box{
-    background-color: colors.$boxColor;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 0.5em 0;
+    padding: padding.$small;
+    border-radius: padding.$small;
+    margin: padding.$small 0;
   }
   
-  .balance--transactions{
+  .transactions--list{
     display: flex;
-    justify-content: space-between;
-    padding: 0.5em 3em;
+    flex-flow: wrap row;
+    padding: padding.$xs padding.$xl;
     border-bottom: 0.5px solid colors.$river;
+  }
+
+  .transaction{
+    font-size: font.$standard;
   }
   
   .transactions--name{
-    
     font-weight: bold;
     color: colors.$river;
-    font-size: 1em;
+    min-width: 200px;
   }
   
   .transactions--date{
-    font-size: 1em;
-    display: flex;
-    
+    font-size: font.$small;
   }
   
   .transactions--amount {
-    font-size: 1em;
     font-weight: bold;
     text-transform: uppercase;
   }

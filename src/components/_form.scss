@@ -1,0 +1,27 @@
+@use '../colors';
+@use '../padding';
+@use '../font';
+
+
+.input--text{
+    background-color: colors.$boxColor;
+    padding: padding.$standard;
+    width: 100%;
+    border: none;
+    border-radius: padding.$small;
+    font-size: font.$standard;
+    font-weight: bold;
+    margin-top: padding.$xs;
+    margin-bottom: padding.$xs;
+    
+}
+
+.form--link {
+    color: colors.$buttonBlue;
+    font-weight: bolder;
+}
+
+.text--link {
+    padding-left: padding.$large;
+
+}
