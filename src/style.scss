@@ -13,3 +13,12 @@
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: colors.$backgroundColor;
   }
+
+  @media (min-width: 500px){
+
+    body{
+      width: 25em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+}

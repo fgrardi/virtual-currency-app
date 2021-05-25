@@ -58,3 +58,11 @@
     font-weight: bold;
     text-transform: uppercase;
   }
+
+  .balance--send{
+    padding: padding.$xxl;
+    border-radius: padding.$small;
+    margin: padding.$large 0;
+    background:  colors.$boxColor center/cover url("../images/COINS.png") no-repeat;
+    min-width: 200px;
+  }

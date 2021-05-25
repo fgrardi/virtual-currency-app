@@ -110,6 +110,14 @@
   text-transform: uppercase;
 }
 
+.balance--send {
+  padding: 4em;
+  border-radius: 0.7em;
+  margin: 1.5em 0;
+  background: #e9e9e9 center/cover url("../images/COINS.png") no-repeat;
+  min-width: 200px;
+}
+
 .hidden {
   display: none;
 }
@@ -138,7 +146,6 @@
 }
 
 .login--illustration {
-  background-image: url(../images/login.png);
   height: 175px;
   display: block;
   margin-left: auto;
@@ -197,6 +204,14 @@ body {
   margin: 4em;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #fff;
+}
+
+@media (min-width: 500px) {
+  body {
+    width: 25em;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
