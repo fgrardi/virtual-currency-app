@@ -23,6 +23,7 @@
     "sass": "^1.33.0"
   },
   "devDependencies": {
+    "gulp": "^4.0.2",
     "nodemon": "^2.0.7"
   }
 }
