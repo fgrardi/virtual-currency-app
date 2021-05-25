@@ -1,0 +1,26 @@
+@use '../colors';
+@use '../padding';
+@use '../font';
+
+.btn {
+    background-color: colors.$buttonBlue;
+    padding: padding.$standard;
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: padding.$medium;
+    font-size: font.$standard;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: padding.$standard;
+    margin-bottom: padding.$standard;
+}
+
+.btn:hover{
+    box-shadow: 0 5px black;
+}
+
+.btn:active {
+    background-color: colors.$blueZodiac;
+    transform: translateY(2px);
+  }

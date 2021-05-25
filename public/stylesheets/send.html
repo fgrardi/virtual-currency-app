@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="heading">Virtual Pay</h1>
+    
+
+    <div class="balance--send">
+        <h2 class="heading--secundary balance--head">Current balance</p>
+        <div class="balance--currentBalance">810.00</div>
+    </div>
+    
+    <div>
+        <h1 class="heading heading--primary">Send coins</h1>
+        <div class="alert hidden">Something went wrong!</div>
+    <div class="send">
+        <div class="input--field">
+            <input type="text" placeholder="Username" class="input--text" name="username" id="username">
+        </div>
+
+        <div class="input--field">
+            <input type="number" placeholder="Number of coins" class="input--text" name="coins--number" id="coins--number">
+        </div>
+
+        <div>
+            <select class="input--text" name="coins--description" id="coins--description">
+                <option value="input--text">What is the reason</option>
+                <option value="development--help">Development help</option>
+                <option value="design--help">Design help</option>
+                <option value="feedback">Feedback</option>
+                <option value="meeting--deadlines">Meeting deadlines</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="input--field">
+            <input type="text" placeholder="Message" class="input--text" name="coins--message" id="coins--message">
+        </div>
+        <button class="btn btn--primary login__btn">Send Coins</button>
+    </div>
+</div>
+
+<span class="text--link">Don't have an account? <a class="form--link" href="signup.html">Create account</a></span>
+
+<nav class="navbar">
+    <a class="navbar--btn" href="index.html">Home</a>
+    <a class="navbar--btn" href="send.html">Send</a>
+    <a class="navbar--btn" href="">User</a>
+</nav>
+
+<script src="routes/login.js"></script>
+
+    
+</body>
+</html>

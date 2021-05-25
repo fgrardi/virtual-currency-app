@@ -1,0 +1,24 @@
+@use 'colors';
+@import 'components/navbar';
+@import 'components/transactions';
+@import 'components/hidden.scss';
+@import 'components/btn';
+@import 'components/illustrations';
+@import 'components/form';
+@import 'components/headings';
+@import 'components/alert';
+
+  body {
+    margin: 4em;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: colors.$backgroundColor;
+  }
+
+  @media (min-width: 500px){
+
+    body{
+      width: 25em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+}

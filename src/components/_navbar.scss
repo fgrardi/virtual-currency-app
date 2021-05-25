@@ -1,0 +1,33 @@
+@use '../colors';
+@import 'btn';
+
+.navbar {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    filter: drop-shadow(0px 4px 8px rgb(0,0,0,0.25));
+  }
+
+  .navbar--btn {
+    font-size: 12px;
+    color: white;
+    background-color: colors.$river;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 60px;
+    transition: 0.1s ease-in-out;
+  }
+  .navbar--btn:hover {
+    background-color: colors.$blueZodiac;
+    transform: translateY(2px);
+  }

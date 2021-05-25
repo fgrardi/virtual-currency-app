@@ -1,0 +1,68 @@
+@use '../colors';
+@use  '../padding';
+@use '../font';
+
+.transactions--head{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: font.$medium;
+    color: colors.$river;
+  }
+  
+  .balance--currentBalance{
+    font-size: font.$xxl;
+    font-weight: bold;
+    text-align: center;
+    color: colors.$river;
+  }
+  
+  .balance--head{
+    text-align: center;
+  }
+  
+  .balance--box{
+    background-color: colors.$boxColor;
+    padding: padding.$xxl;
+    border-radius: padding.$small;
+    margin: padding.$xl 0;
+  }
+  
+  .transactions--box{
+    padding: padding.$small;
+    border-radius: padding.$small;
+    margin: padding.$small 0;
+  }
+  
+  .transactions--list{
+    display: flex;
+    flex-flow: wrap row;
+    padding: padding.$xs padding.$xl;
+    border-bottom: 0.5px solid colors.$river;
+  }
+
+  .transaction{
+    font-size: font.$standard;
+  }
+  
+  .transactions--name{
+    font-weight: bold;
+    color: colors.$river;
+    min-width: 200px;
+  }
+  
+  .transactions--date{
+    font-size: font.$small;
+  }
+  
+  .transactions--amount {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .balance--send{
+    padding: padding.$xxl;
+    border-radius: padding.$small;
+    margin: padding.$large 0;
+    background:  colors.$boxColor center/cover url("../images/COINS.png") no-repeat;
+    min-width: 200px;
+  }

@@ -1,0 +1,22 @@
+@use '../colors';
+@use '../padding';
+@use '../font';
+
+
+.heading {
+    font-weight: bold;
+    color: colors.$river;
+    text-transform: uppercase;
+}
+.heading--primary {
+    font-size: font.$xl;
+    padding-top: padding.$small;
+    padding-bottom: padding.$small;
+    text-transform: none;
+}
+
+.heading--secundary{
+    color: colors.$darkGray;
+    text-transform: none;
+    font-size: font.$standard;
+}

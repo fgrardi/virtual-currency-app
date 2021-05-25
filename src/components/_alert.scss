@@ -1,0 +1,11 @@
+@use '../colors';
+@use '../padding';
+@use '../font';
+
+.alert{
+    background-color: colors.$alertBox;
+    padding: padding.$standard;
+    color: colors.$alertError;
+    width: 100%;
+    border-radius: padding.$xs;
+}
