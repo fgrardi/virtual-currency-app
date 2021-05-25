@@ -11,7 +11,7 @@ function validateEmail(){
     return (true)
   }
     let feedback = document.querySelector(".alert__email");
-    feedback.textContent = "Invalid email";
+    feedback.textContent = "Invalid email: email must contain @student.thomasmore.be!";
     feedback.classList.remove('hidden');
     return (false)
 }
