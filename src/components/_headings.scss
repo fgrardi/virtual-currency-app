@@ -8,14 +8,14 @@
     color: colors.$river;
     text-transform: uppercase;
 }
-.heading--primary {
+.heading__primary {
     font-size: font.$xl;
     padding-top: padding.$small;
     padding-bottom: padding.$small;
     text-transform: none;
 }
 
-.heading--secundary{
+.heading__secundary{
     color: colors.$darkGray;
     text-transform: none;
     font-size: font.$standard;

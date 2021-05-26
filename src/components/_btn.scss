@@ -2,7 +2,7 @@
 @use '../padding';
 @use '../font';
 
-.btn {
+.btn__primary {
     background-color: colors.$buttonBlue;
     padding: padding.$standard;
     color: white;
@@ -16,11 +16,11 @@
     margin-bottom: padding.$standard;
 }
 
-.btn:hover{
+.btn__primary:hover{
     box-shadow: 0 5px black;
 }
 
-.btn:active {
+.btn__primary:active {
     background-color: colors.$blueZodiac;
     transform: translateY(2px);
   }
