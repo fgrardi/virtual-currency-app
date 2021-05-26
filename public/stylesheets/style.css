@@ -1,4 +1,4 @@
-.btn {
+.btn__primary {
   background-color: #1D32F3;
   padding: 1em;
   color: white;
@@ -12,11 +12,11 @@
   margin-bottom: 1em;
 }
 
-.btn:hover {
+.btn__primary:hover {
   box-shadow: 0 5px black;
 }
 
-.btn:active {
+.btn__primary:active {
   background-color: #163c79;
   transform: translateY(2px);
 }
@@ -34,7 +34,7 @@
   filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
 }
 
-.navbar--btn {
+.navbar__btn {
   font-size: 12px;
   color: white;
   background-color: #0A2044;
@@ -48,19 +48,19 @@
   transition: 0.1s ease-in-out;
 }
 
-.navbar--btn:hover {
+.navbar__btn:hover {
   background-color: #163c79;
   transform: translateY(2px);
 }
 
-.transactions--head {
+.heading {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 1.3em;
   color: #0A2044;
 }
 
-.balance--currentBalance {
+.balance__currentBalance {
   font-size: 2.5em;
   font-weight: bold;
   text-align: center;
@@ -71,27 +71,27 @@
   text-align: center;
 }
 
-.balance--box {
+.balanceBox {
   background-color: #e9e9e9;
   padding: 4em;
   border-radius: 0.7em;
   margin: 2em 0;
 }
 
-.transactions--box {
+.transactionsBox {
   padding: 0.7em;
   border-radius: 0.7em;
   margin: 0.7em 0;
 }
 
-.transactions--list {
+.transactions__list {
   display: flex;
   flex-flow: wrap row;
   padding: 0.5em 2em;
   border-bottom: 0.5px solid #0A2044;
 }
 
-.transaction {
+.transaction__item {
   font-size: 1em;
 }
 
@@ -110,8 +110,8 @@
   text-transform: uppercase;
 }
 
-.balance--send {
-  padding: 4em;
+.balanceSend {
+  padding: 2em;
   border-radius: 0.7em;
   margin: 1.5em 0;
   background: #e9e9e9 center/cover url("../images/COINS.png") no-repeat;
@@ -122,7 +122,7 @@
   display: none;
 }
 
-.btn {
+.btn__primary {
   background-color: #1D32F3;
   padding: 1em;
   color: white;
@@ -136,23 +136,23 @@
   margin-bottom: 1em;
 }
 
-.btn:hover {
+.btn__primary:hover {
   box-shadow: 0 5px black;
 }
 
-.btn:active {
+.btn__primary:active {
   background-color: #163c79;
   transform: translateY(2px);
 }
 
-.login--illustration {
+.login__illustration {
   height: 175px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.input--text {
+.input__text {
   background-color: #e9e9e9;
   padding: 1em;
   width: 100%;
@@ -164,12 +164,12 @@
   margin-bottom: 0.5em;
 }
 
-.form--link {
+.form__link {
   color: #1D32F3;
   font-weight: bolder;
 }
 
-.text--link {
+.text__link {
   padding-left: 1.5em;
 }
 
@@ -179,14 +179,14 @@
   text-transform: uppercase;
 }
 
-.heading--primary {
+.heading__primary {
   font-size: 1.7em;
   padding-top: 0.7em;
   padding-bottom: 0.7em;
   text-transform: none;
 }
 
-.heading--secundary {
+.heading__secundary {
   color: #707070;
   text-transform: none;
   font-size: 1em;

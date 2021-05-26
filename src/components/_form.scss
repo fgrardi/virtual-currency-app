@@ -3,7 +3,7 @@
 @use '../font';
 
 
-.input--text{
+.input__text{
     background-color: colors.$boxColor;
     padding: padding.$standard;
     width: 100%;
@@ -16,12 +16,12 @@
     
 }
 
-.form--link {
+.form__link {
     color: colors.$buttonBlue;
     font-weight: bolder;
 }
 
-.text--link {
+.text__link {
     padding-left: padding.$large;
 
 }
