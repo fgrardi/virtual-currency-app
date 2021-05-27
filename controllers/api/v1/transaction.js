@@ -1,4 +1,6 @@
-const Transaction = require('../../../models/Transactions')
+const Transaction = require('../../../models/Transactions');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const createNewTransaction = (req, res) => {
     let transaction = new Transaction();
@@ -23,7 +25,14 @@ const createNewTransaction = (req, res) => {
 };
 
 const getTransactions = (req, res) => {
-    Transaction.find({"user": "fgrardi"}, (err, docs) => {
+    const decodedToken = extractAndVerify(req);
+    if (decodedToken.status !== "success") {
+        res.json(decodedToken);
+    }
+
+    const username = decodedToken.decoded.username;
+
+    Transaction.find({$or:[{user: username},{recipient: username}]}, (err, docs) => {
         if (!err) {
             res.json({
                 "status": "success",
@@ -35,7 +44,8 @@ const getTransactions = (req, res) => {
         else {
             res.json({
                 "status": "error",
-                "message": "couldn't save this transaction"
+                "message": "couldn't save this transaction",
+                "message": error
             })
         }
     })
@@ -54,6 +64,47 @@ const getLeaderboard = (req, res) => {
         "status": "succes",
         "message": "GETTING coins of user"
     })
+}
+
+function extractAndVerify(req) {
+    const extractResult = extractToken(req);
+    if (extractResult.status !== "success") {
+        return extractResult;
+    }
+    return decodeToken(extractResult.token);
+}
+
+function extractToken(req) {
+    let token = req.headers['x-access-token'] || req.headers['authorization']; 
+    if (!token) {
+        return {
+            "status": "error",
+            "message": "No token available!"
+        };
+    }
+    if (token.startsWith('Bearer ')) {
+      token = token.slice(7, token.length);
+    }
+    return { 
+        "status": "success", 
+        token 
+    };
+}
+
+function decodeToken(token) {
+    return jwt.verify(token, config.get("jwt.secret"), (err, decoded) => {
+            if (err) {
+          return {
+            status: "error",
+            message: 'Token is not valid'
+          };
+        } else {
+            return {
+                status: "success",
+                decoded: decoded
+            }
+        }
+    });
 }
 
 module.exports.createNewTransaction = createNewTransaction;
