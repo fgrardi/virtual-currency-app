@@ -52,11 +52,33 @@ const getTransactions = (req, res) => {
 };
 
 const getTransactionById = (req, res) => {
-    let id = req.params.id;
-    res.json({
-        "status": "success",
-        "message": `GETTING transaction with id ${id}`
-    })
+    const decodedToken = extractAndVerify(req);
+    if (decodedToken.status !== "success") {
+        return res.json(decodedToken);
+    }
+    const id = req.params.id;
+    const username = decodedToken.decoded.username;
+    Transaction.findOne({_id: id}, (error, transaction) => {
+        if (error) {
+            res.json({
+                "status": "error",
+                "message": error
+            })
+        }
+        else {
+            if (transaction.user !== username) {
+                res.json({
+                    "status": "error",
+                    "message": "Transaction not of user of token"
+                })
+                } else {
+                res.json({
+                    "status": "success",
+                    "transaction": transaction
+                })
+            }
+        }
+    });
 };
 
 const getLeaderboard = (req, res) => {
