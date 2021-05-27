@@ -104,6 +104,28 @@ const getLeaderboard = (req, res) => {
     })
 }
 
+async function createLeaderboard() {
+    leaderboard = {};
+    let allDocs = await Transaction.find();
+    allDocs.forEach(doc => {
+        let el = leaderboard[doc.recipient];
+        if (!el) {
+            leaderboard[doc.recipient] = doc.amount;
+        } else {
+            leaderboard[doc.recipient] = el + doc.amount;
+        }
+    })
+
+    // sort array
+    leaderboard = Object.entries(leaderboard).sort((a, b) => {
+        if (a[0] < b[0]) return -1
+        else if ((a[0] > b[0])) return 1
+        else return 0
+    }).map(element => { return { "name": element[0], "amount": element[1] } } );
+
+    return leaderboard;
+}
+
 function extractAndVerify(req) {
     const extractResult = extractToken(req);
     if (extractResult.status !== "success") {
