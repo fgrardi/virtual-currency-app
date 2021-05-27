@@ -20,6 +20,7 @@ const signup = async (req, res, next) => {
             "status": "success",
             "confirmationCode": result.confirmationCode
         })
+        nodemailer.sendConfirmationEmail(user.username, user.email, user.confirmationCode, host);
     }).catch(error => {
         res.json({
             "status": "error [" + error + "]"
