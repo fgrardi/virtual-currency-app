@@ -30,12 +30,10 @@ const signup = async (req, res, next) => {
 
 
 const login = async (req, res, next) => {
-    const user = await User.find(
-        {
-            username: req.body.username,
-            password: req.body.password
-        }
-    ).then(result => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    const user = await User.find({username, password}).then(result => {
         if (result[0].status !== "Active") {
             res.json({
                 "status": "error",
