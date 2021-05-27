@@ -37,7 +37,8 @@ const login = async (req, res, next) => {
         if (result[0].status !== "Active") {
             res.json({
                 "status": "error",
-                "message": "Pending Account. Please Verify Your Email!"
+                "message": "Pending Account. Please Verify Your Email!",
+                "confirmationCode": result[0].confirmationCode
             })
         } else {
             res.json({
