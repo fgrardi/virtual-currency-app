@@ -27,7 +27,38 @@ const signup = async (req, res, next) => {
     });
 };
 
+const confirm = async (req, res) => {
+    await User.findOne({ confirmationCode: req.query.code })
+        .then(found => { 
+            jwt.verify(req.query.code, config.secret, async (err, decoded) => {
+                if (err) {
+                  return res.json({
+                    "status": "error",
+                    "message": 'Token is not valid'
+                  });
+                } else {
+                    if (decoded.email !== found.email) {
+                        return res.json({
+                            "status": "error",
+                            "message": 'Token does not match user'
+                        });
+                    };
+                }
+                User.findOneAndUpdate({ confirmationCode: req.query.code }, {status: "Active"}, null, () => {
+                    res.json({
+                        "status": "success" 
+                    });
+                });
+            });
+        })
+        .catch(error => {
+            res.json({
+                "status": "error",
+                "message": error
+            })
+        });
 
+}
 
 const login = async (req, res, next) => {
     let username = req.body.username;
@@ -69,4 +100,5 @@ function createToken(username) {
 }
 
 module.exports.signup = signup;
+module.exports.confirm = confirm;
 module.exports.login = login;
