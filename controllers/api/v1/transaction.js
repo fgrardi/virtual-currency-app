@@ -3,25 +3,41 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const createNewTransaction = (req, res) => {
-    let transaction = new Transaction();
+    const decodedToken = extractAndVerify(req);
+    if (decodedToken.status !== "success") {
+        return res.json(decodedToken);
+    }
+    const amount = req.body.amount;
+    const user = req.body.user;
+    const recipient = req.body.recipient;
+    const reason = req.body.reason;
 
-    transaction.text = req.body.text;
-    transaction.amount = req.body.amount;
-    transaction.user = req.body.user;
-    transaction.recipient = req.body.recipient;
-    transaction.reason = req.body.reason;
-    transaction.completed = req.body.completed;
+    if (user !== decodedToken.decoded.username) {
+        return res.json({
+            "status": "error",
+            "message": "User inside token does not match transaction!"
+        })
+    }
+
+    const transaction = new Transaction({
+        amount,
+        user,
+        recipient,
+        reason
+    });
     
-    transaction.save((err, doc) => {
-        if (!err) {
-            res.json({
-                "status": "success",
-                "data": {
-                    "transaction" : doc
-                }
-            })
-        }
-    })
+    transaction.save().then(async () => {
+        res.json({
+            "status": "success"
+        });
+        let leaderboard = await createLeaderboard();
+        primus.write({transaction: { user, recipient, amount }, leaderboard } );
+    }).catch(error => {
+        res.json({
+            "status": "error",
+            "message": error
+        })
+    });
 };
 
 const getTransactions = (req, res) => {
