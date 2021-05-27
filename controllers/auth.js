@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const passport = require('../passport/passport');
+const jwt = require('jsonwebtoken');
 
 const signup = async (req, res, next) => {
     let username = req.body.username;
@@ -9,7 +10,8 @@ const signup = async (req, res, next) => {
     const user = new User({
         username: username,
         password: password,
-        email: email
+        email: email,
+        confirmationCode: createToken({email})
     });
     await user.setPassword(password);
     await user.save().then(result => {
@@ -27,7 +29,7 @@ const login = async (req, res, next) => {
     const user = await User.find(
         {
             username: req.body.username,
-            password: req.user.password
+            password: req.body.password
         }
     ).then(result => {
         if (result[0].status !== "Active") {
@@ -35,19 +37,29 @@ const login = async (req, res, next) => {
                 "status": "error",
                 "message": "Pending Account. Please Verify Your Email!"
             })
+        } else {
+            res.json({
+                "status": "success",
+                "data": {
+                    "token": createToken({username: result[0].username})
+                }
+            })
         }
-        res.json({
-            "status": "success",
-            "data": {
-                "user": result
-            }
-        })
     }).catch( error => {
         res.json({
             "status": "error",
             "message": error
         })
     });
+}
+
+function createToken(data) {
+    return jwt.sign(data,
+        config.secret,
+        { 
+            expiresIn: '24h' // expires in 24 hours
+        }
+      );
 }
 
 module.exports.signup = signup;
