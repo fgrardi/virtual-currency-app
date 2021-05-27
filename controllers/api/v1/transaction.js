@@ -98,10 +98,18 @@ const getTransactionById = (req, res) => {
 };
 
 const getLeaderboard = (req, res) => {
-    res.json({
-        "status": "succes",
-        "message": "GETTING coins of user"
-    })
+    let leaderboard = createLeaderboard();
+    if (leaderboard) {
+        res.json({
+            "status": "succes",
+            "message": "GETTING coins of user"
+        })
+    }
+    else {
+        res.json({
+            "status": "error"
+        })
+    }
 }
 
 async function createLeaderboard() {
