@@ -2,14 +2,14 @@
 @use  '../padding';
 @use '../font';
 
-.heading{
+.transactions--head{
     font-weight: bold;
     text-transform: uppercase;
     font-size: font.$medium;
     color: colors.$river;
   }
   
-  .balance__currentBalance{
+  .balance--currentBalance{
     font-size: font.$xxl;
     font-weight: bold;
     text-align: center;
@@ -20,27 +20,27 @@
     text-align: center;
   }
   
-  .balanceBox{
+  .balance--box{
     background-color: colors.$boxColor;
     padding: padding.$xxl;
     border-radius: padding.$small;
     margin: padding.$xl 0;
   }
   
-  .transactionsBox{
+  .transactions--box{
     padding: padding.$small;
     border-radius: padding.$small;
     margin: padding.$small 0;
   }
   
-  .transactions__list{
+  .transactions--list{
     display: flex;
     flex-flow: wrap row;
     padding: padding.$xs padding.$xl;
     border-bottom: 0.5px solid colors.$river;
   }
 
-  .transaction__item{
+  .transaction{
     font-size: font.$standard;
   }
   
@@ -59,8 +59,8 @@
     text-transform: uppercase;
   }
 
-  .balanceSend{
-    padding: padding.$xl;
+  .balance--send{
+    padding: padding.$xxl;
     border-radius: padding.$small;
     margin: padding.$large 0;
     background:  colors.$boxColor center/cover url("../images/COINS.png") no-repeat;

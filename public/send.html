@@ -12,47 +12,47 @@
     <h1 class="heading">Virtual Pay</h1>
     
 
-    <div class="balanceSend">
-        <h2 class="heading__secundary balance--head">Current balance</p>
-        <div class="balance__currentBalance">810.00</div>
+    <div class="balance--send">
+        <h2 class="heading--secundary balance--head">Current balance</p>
+        <div class="balance--currentBalance">810.00</div>
     </div>
     
-    <div class="formBlock">
-        <h1 class="heading heading__primary">Send coins</h1>
+    <div>
+        <h1 class="heading heading--primary">Send coins</h1>
         <div class="alert hidden">Something went wrong!</div>
     <div class="send">
-        <div class="input__field">
-            <input type="text" placeholder="Username" class="input__text" name="username" id="username">
+        <div class="input--field">
+            <input type="text" placeholder="Username" class="input--text" name="username" id="username">
         </div>
 
-        <div class="input__field">
-            <input type="number" placeholder="Number of coins" class="input__text" name="coinsNumber" id="coinsNumber">
+        <div class="input--field">
+            <input type="number" placeholder="Number of coins" class="input--text" name="coins--number" id="coins--number">
         </div>
 
         <div>
-            <select class="input__text" name="coinsDescription" id="coinDescription">
-                <option value="input__text">What is the reason</option>
-                <option value="developmentHelp">Development help</option>
-                <option value="designHelp">Design help</option>
+            <select class="input--text" name="coins--description" id="coins--description">
+                <option value="input--text">What is the reason</option>
+                <option value="development--help">Development help</option>
+                <option value="design--help">Design help</option>
                 <option value="feedback">Feedback</option>
-                <option value="meetingDeadlines">Meeting deadlines</option>
+                <option value="meeting--deadlines">Meeting deadlines</option>
                 <option value="other">Other</option>
             </select>
         </div>
 
-        <div class="input__field">
-            <input type="text" placeholder="Message" class="input__text" name="coinsMessage" id="coinsMessage">
+        <div class="input--field">
+            <input type="text" placeholder="Message" class="input--text" name="coins--message" id="coins--message">
         </div>
-        <button class="btn__primary btn--login">Send Coins</button>
+        <button class="btn btn--primary login__btn">Send Coins</button>
     </div>
 </div>
 
-<span class="text__link">Don't have an account? <a class="form__link" href="signup.html">Create account</a></span>
+<span class="text--link">Don't have an account? <a class="form--link" href="signup.html">Create account</a></span>
 
 <nav class="navbar">
-    <a class="navbar__btn" href="index.html">Home</a>
-    <a class="navbar__btn" href="send.html">Send</a>
-    <a class="navbar__btn" href="">User</a>
+    <a class="navbar--btn" href="index.html">Home</a>
+    <a class="navbar--btn" href="send.html">Send</a>
+    <a class="navbar--btn" href="">User</a>
 </nav>
 
 <script src="routes/send.js"></script>
