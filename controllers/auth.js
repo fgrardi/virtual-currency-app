@@ -17,7 +17,8 @@ const signup = async (req, res, next) => {
     await user.setPassword(password);
     await user.save().then(result => {
         res.json({
-            "status": "success"
+            "status": "success",
+            "confirmationCode": result.confirmationCode
         })
     }).catch(error => {
         res.json({
@@ -25,6 +26,8 @@ const signup = async (req, res, next) => {
         })
     });
 };
+
+
 
 const login = async (req, res, next) => {
     const user = await User.find(
