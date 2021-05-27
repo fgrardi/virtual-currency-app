@@ -54,8 +54,9 @@ const login = async (req, res, next) => {
     });
 }
 
+//create token
 function createToken(username) {
-    console.log("Token: ", config.get("jwt.secret"));
+    console.log("Token: ", config.get("jwt.secret")); //show token in console log
 
     return jwt.sign({username: username},
         config.get("jwt.secret"),
