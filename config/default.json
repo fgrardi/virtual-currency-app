@@ -2,7 +2,13 @@
     "Database": {
         "conn": "mongodb://localhost:27017/cryptoapp"
     },
+
     "jwt": {
         "secret": "worldisfullofdevelopers"
+    },
+    
+    "nodemailer": {
+        "user": "fien.thomasmore@gmail.com",
+        "password": "thomasmore"
     }
 }
