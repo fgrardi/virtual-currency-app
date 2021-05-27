@@ -18,13 +18,24 @@ const signup = async (req, res, next) => {
         })
     }).catch(error => {
         res.json({
-            "status": "error"
+            "status": "error [" + error + "]"
         })
     });
 };
 
 const login = async (req, res, next) => {
-    const user = await User.authenticate()(req.body.username, req.body.password).then(result => {
+    const user = await User.find(
+        {
+            username: req.body.username,
+            password: req.user.password
+        }
+    ).then(result => {
+        if (result[0].status !== "Active") {
+            res.json({
+                "status": "error",
+                "message": "Pending Account. Please Verify Your Email!"
+            })
+        }
         res.json({
             "status": "success",
             "data": {
