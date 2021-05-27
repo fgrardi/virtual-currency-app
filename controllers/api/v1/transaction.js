@@ -31,7 +31,7 @@ const createNewTransaction = (req, res) => {
             "status": "success"
         });
         let leaderboard = await createLeaderboard();
-        primus.write({transaction: { user, recipient, amount }, leaderboard } );
+        //primus.write({transaction: { user, recipient, amount }, leaderboard } );
     }).catch(error => {
         res.json({
             "status": "error",
