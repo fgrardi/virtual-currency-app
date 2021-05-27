@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const passport = require('../passport/passport');
 const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const signup = async (req, res, next) => {
     let username = req.body.username;
@@ -11,7 +12,7 @@ const signup = async (req, res, next) => {
         username: username,
         password: password,
         email: email,
-        confirmationCode: createToken({email})
+        confirmationCode: createToken(email)
     });
     await user.setPassword(password);
     await user.save().then(result => {
@@ -41,7 +42,7 @@ const login = async (req, res, next) => {
             res.json({
                 "status": "success",
                 "data": {
-                    "token": createToken({username: result[0].username})
+                    "token": createToken(result.username)
                 }
             })
         }
@@ -53,9 +54,11 @@ const login = async (req, res, next) => {
     });
 }
 
-function createToken(data) {
-    return jwt.sign(data,
-        config.secret,
+function createToken(username) {
+    console.log("Token: ", config.get("jwt.secret"));
+
+    return jwt.sign({username: username},
+        config.get("jwt.secret"),
         { 
             expiresIn: '24h' // expires in 24 hours
         }
