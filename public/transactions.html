@@ -19,19 +19,19 @@
     
     <div>
         <h1 class="heading heading--primary">Send coins</h1>
-        <div class="alert hidden">Something went wrong!</div>
-    <div class="send">
+        <div class="alert alert__fail hidden">Something went wrong!</div>
+    <div class="transaction">
         <div class="input--field">
             <input type="text" placeholder="Username" class="input--text" name="username" id="username">
             <div id="userList"></div>
         </div>
 
         <div class="input--field">
-            <input type="number" placeholder="Number of coins" class="input--text" name="coins--number" id="coins--number">
+            <input type="number" placeholder="Number of coins" class="input--text" name="coins" id="coins">
         </div>
 
         <div>
-            <select class="input--text" name="coins--description" id="coins--description">
+            <select class="input--text" name="reason" id="reason">
                 <option value="input--text">What is the reason</option>
                 <option value="development--help">Development help</option>
                 <option value="design--help">Design help</option>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="input--field">
-            <input type="text" placeholder="Message" class="input--text" name="coins--message" id="coins--message">
+            <input type="text" placeholder="Message" class="input--text" name="message" id="message">
         </div>
         <button class="btn btn--primary login__btn">Send Coins</button>
     </div>
@@ -52,7 +52,7 @@
 
 <nav class="navbar">
     <a class="navbar--btn" href="index.html">Home</a>
-    <a class="navbar--btn" href="send.html">Send</a>
+    <a class="navbar--btn" href="transactions.html">Send</a>
     <a class="navbar--btn" href="">User</a>
 </nav>
 
