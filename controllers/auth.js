@@ -84,7 +84,7 @@ const login = async (req, res, next) => {
             res.json({
                 "status": "success",
                 "data": {
-                    "token": createToken({username: result.username})
+                    "token": createToken({username: result[0].username})
                 }
             })
         }
