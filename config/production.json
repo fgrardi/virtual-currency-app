@@ -1,0 +1,10 @@
+{
+    "jwt": {
+        "secret": "worldisfullofdevelopers"
+    },
+    
+    "nodemailer": {
+        "user": "fien.thomasmore@gmail.com",
+        "password": "thomasmore"
+    }
+}
