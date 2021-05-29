@@ -4,7 +4,7 @@
     },
     
     "nodemailer": {
-        "user": "fien.thomasmore@gmail.com",
+        "user": "fgrardi.thomasmore@gmail.com", 
         "password": "thomasmore"
     }
 }
