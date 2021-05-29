@@ -2,25 +2,33 @@ const User = require('../models/User');
 const passport = require('../passport/passport');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const nodemailer = require('../mailer/nodemailer.config');
 
 const signup = async (req, res, next) => {
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
     let username = req.body.username;
     let password = req.body.password;
     let email = req.body.email;
 
+    // get host name
+    let hostname = req.get('host');
+
     const user = new User({
+        firstname: firstname,
+        lastname: lastname,
         username: username,
         password: password,
         email: email,
-        confirmationCode: createToken(email)
+        confirmationCode: createToken({email: email})
     });
     await user.setPassword(password);
     await user.save().then(result => {
+        nodemailer.sendConfirmationEmail(user.username, user.email, user.confirmationCode, host);
         res.json({
             "status": "success",
             "confirmationCode": result.confirmationCode
         })
-        nodemailer.sendConfirmationEmail(user.username, user.email, user.confirmationCode, host);
     }).catch(error => {
         res.json({
             "status": "error [" + error + "]"
@@ -76,7 +84,7 @@ const login = async (req, res, next) => {
             res.json({
                 "status": "success",
                 "data": {
-                    "token": createToken(result.username)
+                    "token": createToken({username: result.username})
                 }
             })
         }
@@ -89,10 +97,10 @@ const login = async (req, res, next) => {
 }
 
 //create token
-function createToken(username) {
+function createToken(data) {
     console.log("Token: ", config.get("jwt.secret")); //show token in console log
 
-    return jwt.sign({username: username},
+    return jwt.sign(data,
         config.get("jwt.secret"),
         { 
             expiresIn: '24h' // expires in 24 hours
