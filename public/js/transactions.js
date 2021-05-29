@@ -4,7 +4,7 @@ const matchList = document.getElementById('userList');
 // autocomplete username
 
 const searchUser = async searchText => {
-    const resAPI = await fetch('/users/getdata', {
+    const resAPI = await fetch('/users', { //getdata weggehaald => /users: ik maak dit endpoint (fien)
         method: "get",
                 headers: {
                     'Content-Type': 'application/json'
