@@ -39,7 +39,7 @@ const signup = async (req, res, next) => {
 const confirm = async (req, res) => {
     await User.findOne({ confirmationCode: req.query.code })
         .then(found => { 
-            jwt.verify(req.query.code, config.secret, async (err, decoded) => {
+            jwt.verify(req.query.code, config.get("jwt.secret"), async (err, decoded) => {
                 if (err) {
                   return res.json({
                     "status": "error",
