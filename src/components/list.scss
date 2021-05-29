@@ -1,0 +1,39 @@
+@use '../colors';
+@use  '../padding';
+@use '../font';
+
+.list {
+    height: 100%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list__item {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: $color--primary;
+}
+
+.list__item--rank {
+    font-style: italic;
+}
+
+.list__item--name {
+
+}
+
+.list__item--amount {
+    font-style: bold;
+}
+
+.list--hr {
+    width: 90%;
+    border-width: 1px;
+    text-align: center;
+}
