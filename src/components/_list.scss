@@ -17,23 +17,13 @@
     justify-content: space-between;
     margin-top: 15px;
     margin-bottom: 15px;
-    color: $color--primary;
 }
 
 .list__item--rank {
-    font-style: italic;
-}
-
-.list__item--name {
-
+    font-weight: bolder;
 }
 
 .list__item--amount {
-    font-style: bold;
-}
-
-.list--hr {
-    width: 90%;
-    border-width: 1px;
-    text-align: center;
+    font-weight: bolder;
+    color: colors.$buttonBlue;
 }

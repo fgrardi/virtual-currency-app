@@ -134,17 +134,18 @@ const getBalance = (req, res) => {
 
 const getLeaderboard = (req, res) => {
     let leaderboard = createLeaderboard();
-    if (leaderboard) {
+    leaderboard.then(leaderboard => {
         res.json({
-            "status": "succes",
-            "message": "GETTING coins of user"
-        })
-    }
-    else {
+            "status": "success",
+            "leaderboard": leaderboard
+        });
+    })
+    .catch(error => {
         res.json({
-            "status": "error"
+            "status": "error",
+            "message": error
         })
-    }
+    })
 }
 
 async function createLeaderboard() {
