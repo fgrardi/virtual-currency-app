@@ -23,8 +23,8 @@ const signup = async (req, res, next) => {
         confirmationCode: createToken({email: email})
     });
     await user.setPassword(password);
-    await user.save().then(result => {
-        nodemailer.sendConfirmationEmail(user.username, user.email, user.confirmationCode, host);
+    await user.save().then(async (result) => {
+        await nodemailer.sendConfirmationEmail(user.username, user.email, user.confirmationCode, hostname);
         res.json({
             "status": "success",
             "confirmationCode": result.confirmationCode
