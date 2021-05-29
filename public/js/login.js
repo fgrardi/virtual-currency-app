@@ -2,8 +2,8 @@ var btnLogin = document.querySelector(".login__btn");
 
 btnLogin.addEventListener("click", (e) => {
     //console.log("click");
-    
-    let email = document.querySelector('#email').value;
+
+    let username = document.querySelector("#username").value;
     let password = document.querySelector('#password').value;
 
         fetch('/users/login', {
@@ -12,7 +12,7 @@ btnLogin.addEventListener("click", (e) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "email": email,
+                "username": username,
                 "password": password
             })
         }).then(response => {
