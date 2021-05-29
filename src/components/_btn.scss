@@ -23,4 +23,9 @@
 .btn:active {
     background-color: colors.$blueZodiac;
     transform: translateY(2px);
-  }
+}
+
+.btn--link {
+    color: colors.$buttonBlue;
+    font-weight: bolder;
+}

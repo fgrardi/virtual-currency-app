@@ -8,32 +8,39 @@
     font-size: font.$medium;
     color: colors.$river;
   }
+
+  .balance{
+    background-color: colors.$boxColor;
+    padding: padding.$xxl;
+    border-radius: padding.$large;
+    margin: padding.$xl 0;
+  }
+
+  .balance_bg {
+    padding: padding.$xxl;
+    border-radius: padding.$small;
+    margin: padding.$large 0;
+    min-width: 200px;
+  }
   
-  .balance--currentBalance{
+  .balance__amount{
     font-size: font.$xxl;
     font-weight: bold;
     text-align: center;
     color: colors.$river;
   }
   
-  .balance--head{
+  .balance__subtitle{
     text-align: center;
   }
   
-  .balance--box{
-    background-color: colors.$boxColor;
-    padding: padding.$xxl;
-    border-radius: padding.$small;
-    margin: padding.$xl 0;
-  }
-  
-  .transactions--box{
+  .transactions{
     padding: padding.$small;
     border-radius: padding.$small;
     margin: padding.$small 0;
   }
   
-  .transactions--list{
+  .transactions__list{
     display: flex;
     flex-flow: wrap row;
     padding: padding.$xs padding.$xl;
@@ -44,25 +51,17 @@
     font-size: font.$standard;
   }
   
-  .transactions--name{
+  .transaction__name{
     font-weight: bold;
     color: colors.$river;
     min-width: 200px;
   }
   
-  .transactions--date{
+  .transaction__date{
     font-size: font.$small;
   }
   
-  .transactions--amount {
+  .transaction__amount {
     font-weight: bold;
     text-transform: uppercase;
-  }
-
-  .balance--send{
-    padding: padding.$xxl;
-    border-radius: padding.$small;
-    margin: padding.$large 0;
-    background:  colors.$boxColor center/cover url("../images/COINS.png") no-repeat;
-    min-width: 200px;
   }

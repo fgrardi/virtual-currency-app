@@ -3,9 +3,19 @@
 @use '../font';
 
 .alert{
-    background-color: colors.$alertBox;
+    background-color: colors.$boxColor;
     padding: padding.$standard;
-    color: colors.$alertError;
+    color: colors.$darkGray;
     width: 100%;
     border-radius: padding.$xs;
+}
+
+.alert--fail{
+    background-color: colors.$alertBox;
+    color: colors.$alertError;
+}
+
+.alert--succes{
+    background-color: colors.$alertSuccess;
+    color: colors.$transactionFrom;
 }

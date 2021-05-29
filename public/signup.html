@@ -5,35 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./cssminify/reset.css">
-    <link rel="stylesheet" href="./cssminify/style.css">
+    <link rel="stylesheet" href="./cssminify/app.css">
     <title>Signup</title>
 </head>
 <body>
     <h1 class="heading">Virtual Pay</h1>
-    <img class="login--illustration" src="./assets/login.png" alt="">
+    <img class="account--illustration" src="./assets/login.png" alt="">
 
     <div>
         <h1 class="heading heading--primary">Register</h1>
-        <div class="alert alert__fail hidden">Something went wrong!</div>
-        <div class="alert alert__email hidden">Something went wrong!</div>
-    <div class="signup">
+        <div class="alert alert--succes hidden">Signup succesfull! Please check your email to active your account</div>
+        <div class="alert alert--fail hidden">Something went wrong!</div>
+    <div class="signup form">
         
-        <input type="text" placeholder="Email" class="input--text" name="email" id="email">
-        <input type="text" placeholder="Username" class="input--text" name="username" id="username">
-        <input type="text" placeholder="First name" class="input--text" name="firstname" id="firstname">
-        <input type="text" placeholder="Last name" class="input--text" name="lastname" id="lastname">
-        <input type="password" placeholder="Password" class="input--text" name="password" id="password">
+        <input type="text" placeholder="Email" class="form__input" name="email" id="email">
+        <input type="text" placeholder="Username" class="form__input" name="username" id="username">
+        <input type="text" placeholder="First name" class="form__input" name="firstname" id="firstname">
+        <input type="text" placeholder="Last name" class="form__input" name="lastname" id="lastname">
+        <input type="password" placeholder="Password" class="form__input" name="password" id="password">
         
         <button class="btn btn--primary login__btn">Register</button>
     </div>
 </div>
 
-<span>I already have an account. <a class="form--link" href="login.html">Log in</a></span>
+<span>I already have an account. <a class="btn--link" href="login.html">Log in</a></span>
 
-<nav class="navbar">
-    <a class="navbar--btn" href="index.html">Home</a>
-    <a class="navbar--btn" href="transactions.html">Send</a>
-    <a class="navbar--btn" href="">User</a>
+<nav class="nav">
+    <a class="nav__text" href="index.html">Home</a>
+    <a class="nav__text" href="transactions.html">Send</a>
+    <a class="nav__text" href="">User</a>
 </nav>
 
 <script src="./js/signup.js"></script>

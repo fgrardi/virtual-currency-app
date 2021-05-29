@@ -6,33 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./cssminify/reset.css">
-    <link rel="stylesheet" href="./cssminify/style.css">
+    <link rel="stylesheet" href="./cssminify/app.css">
 </head>
 <body>
     <h1 class="heading">Virtual Pay</h1>
-    <img class="login--illustration" src="./assets/login.png" alt="login">
+    <img class="account--illustration" src="./assets/login.png" alt="login">
 
     <div>
         <h1 class="heading heading--primary">Log in</h1>
         <div class="alert hidden">Something went wrong!</div>
-    <div class="login">
-        <div class="input--field">
-            <input type="text" placeholder="Username" class="input--text" name="username" id="username">
+        <div class="login form">
+            <input type="text" placeholder="Username" class="form__input" name="username" id="username">
+            <input type="password" placeholder="Password" class="form__input" name="password" id="password">
+            <button class="btn btn--primary login__btn">Log in</button>
         </div>
-
-        <div class="input--field">
-            <input type="password" placeholder="Password" class="input--text" name="password" id="password">
-        </div>
-        <button class="btn btn--primary login__btn">Log in</button>
     </div>
-</div>
 
-<span class="text--link">Don't have an account? <a class="form--link" href="signup.html">Create account</a></span>
+<span>Don't have an account? <a class="btn--link" href="signup.html">Create account</a></span>
 
-<nav class="navbar">
-    <a class="navbar--btn" href="index.html">Home</a>
-    <a class="navbar--btn" href="transactions.html">Send</a>
-    <a class="navbar--btn" href="">User</a>
+<nav class="nav">
+    <a class="nav__text" href="index.html">Home</a>
+    <a class="nav__text" href="transactions.html">Send</a>
+    <a class="nav__text" href="">User</a>
 </nav>
 
 <script src="./js/login.js"></script>
