@@ -23,8 +23,8 @@ btnLogin.addEventListener("click", (e) => {
                 localStorage.setItem("token", token);
                 window.location.href = "index.html";
             } else {
-                let feedback = document.querySelector(".alert");
-                feedback.textContent = "Login failed.";
+                let feedback = document.querySelector(".alert--fail");
+                feedback.innerText = "Username or password incorrect.";
                 feedback.classList.remove('hidden');
             }
         })
