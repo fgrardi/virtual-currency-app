@@ -96,6 +96,29 @@ const login = async (req, res, next) => {
     });
 }
 
+const users = async (req,res) => {
+    await User.find({})
+        .then(users => {
+            let userInfo = []
+            users.forEach(user => {
+                userInfo.push({ username: user.username, firstname: user.firstname, lastname: user.lastname });
+            });
+            return userInfo;
+        })
+        .then(filteredUsers => {
+            res.json({
+                "status": "success",
+                "users": filteredUsers
+            });
+        })
+        .catch(error => {
+            res.json({
+                "status": "error",
+                "message": error
+            })
+        });
+}
+
 //create token
 function createToken(data) {
     console.log("Token: ", config.get("jwt.secret")); //show token in console log
@@ -111,3 +134,4 @@ function createToken(data) {
 module.exports.signup = signup;
 module.exports.confirm = confirm;
 module.exports.login = login;
+module.exports.users = users;
