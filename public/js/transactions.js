@@ -35,40 +35,43 @@ const outputHtml = matches => {
         match.innerHTML = html
     }
 }
-
 search.addEventListener('input', ()=> searchUser(search.value));
 
-var btnSignup = document.querySelector(".transaction button").addEventListener("click", (e) => {
-    let firstname = document.querySelector('#username').value;
-    let coins = document.querySelector('#coins').value;
+var btnSignup = document.querySelector(".transaction button");
+
+btnSignup.addEventListener("click", (e) => {
+    let username = document.querySelector('#username').value;
+    let amount = document.querySelector('#coins').value;
     let reason = document.querySelector('#reason').value;
     let message = document.querySelector('#message').value;
+    let token = localStorage.getItem('token');
     
-        fetch('/users/signup', {
-            method: "post",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "firstname": firstname,
-                "coins": coins,
-                "reason": reason,
-                "message": message
-            })
-        }).then(response => {
-            return response.json();
-            
-        }).then(json => {
-            if (json.status === "success") {
-                let feedback = document.querySelector(".alert__fail");
-                feedback.textContent = "Transfer succesful!";
-                feedback.classList.remove('hidden');
-            }
-            else{
-                let feedback = document.querySelector(".alert__fail");
-                feedback.textContent = "Something went wrong!";
-                feedback.classList.remove('hidden');
-            }
+    fetch('/users/signup', {
+        method: "post",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify({
+            "username": username,
+            "amount": amount,
+            "reason": reason,
+            "message": message
         })
-    });
+    }).then(response => {
+        return response.json();
+        
+    }).then(json => {
+        if (json.status === "success") {
+            let feedback = document.querySelector(".alert__fail");
+            feedback.textContent = "Transfer succesful!";
+            feedback.classList.remove('hidden');
+        }
+        else{
+            let feedback = document.querySelector(".alert__fail");
+            feedback.textContent = "Something went wrong!";
+            feedback.classList.remove('hidden');
+        }
+    })
+});
 
