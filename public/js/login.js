@@ -1,6 +1,8 @@
 var btnLogin = document.querySelector(".login__btn");
 
 btnLogin.addEventListener("click", (e) => {
+    //console.log("click");
+    
     let email = document.querySelector('#email').value;
     let password = document.querySelector('#password').value;
 
