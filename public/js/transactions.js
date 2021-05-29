@@ -16,7 +16,7 @@ const searchUser = async searchText => {
         return user.firstname.match(regex) || user.lastname.match(regex);
     });
 
-    if(searchText.lenght === 0){
+    if(searchText.length === 0){
         matches = [];
         matchList.innerHTML = '';
     }
