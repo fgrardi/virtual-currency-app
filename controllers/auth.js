@@ -97,7 +97,7 @@ const login = async (req, res, next) => {
 }
 
 const users = async (req,res) => {
-    await User.find({})
+    await User.find({status: "Active"})
         .then(users => {
             let userInfo = []
             users.forEach(user => {

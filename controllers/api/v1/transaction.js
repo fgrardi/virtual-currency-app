@@ -11,6 +11,7 @@ const createNewTransaction = (req, res) => {
     const user = req.body.user;
     const recipient = req.body.recipient;
     const reason = req.body.reason;
+    const remark = req.body.remark;
 
     if (user !== decodedToken.decoded.username) {
         return res.json({
@@ -23,7 +24,8 @@ const createNewTransaction = (req, res) => {
         amount,
         user,
         recipient,
-        reason
+        reason,
+        remark
     });
     
     transaction.save().then(async () => {
@@ -95,6 +97,39 @@ const getTransactionById = (req, res) => {
             }
         }
     });
+};
+
+const getBalance = (req, res) => {
+    const decodedToken = extractAndVerify(req);
+    if (decodedToken.status !== "success") {
+        res.json(decodedToken);
+    }
+    const username = decodedToken.decoded.username;
+    Transaction.find({$or:[{user: username},{recipient: username}]}, (err, docs) => {
+        if (!err) {
+            let balance = 0;
+            docs.forEach(doc => {
+                if (doc.recipient === username) {
+                    balance += doc.amount;
+                } else {
+                    balance -= doc.amount;
+                }
+            });
+            res.json({
+                "status": "success",
+                "data": {
+                    "balance": balance
+                }
+            })
+        }
+        else {
+            res.json({
+                "status": "error",
+                "message": "couldn't calculate balance",
+                "message": error
+            })
+        }
+    })
 };
 
 const getLeaderboard = (req, res) => {
@@ -179,3 +214,4 @@ module.exports.createNewTransaction = createNewTransaction;
 module.exports.getTransactions = getTransactions;
 module.exports.getTransactionById = getTransactionById;
 module.exports.getLeaderboard = getLeaderboard;
+module.exports.getBalance = getBalance;
