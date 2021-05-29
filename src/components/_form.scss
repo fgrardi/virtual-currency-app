@@ -2,8 +2,12 @@
 @use '../padding';
 @use '../font';
 
+.form {
+    width: auto;
+    height: auto;
+}
 
-.input--text{
+.form__input {
     background-color: colors.$boxColor;
     padding: padding.$standard;
     width: 100%;
@@ -13,17 +17,6 @@
     font-weight: bold;
     margin-top: padding.$xs;
     margin-bottom: padding.$xs;
-    
-}
-
-.form--link {
-    color: colors.$buttonBlue;
-    font-weight: bolder;
-}
-
-.text--link {
-    padding-left: padding.$large;
-
 }
 
 

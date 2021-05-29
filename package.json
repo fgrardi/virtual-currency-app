@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "./node_modules/.bin/nodemon ./bin/www",
-    "dev": "./node_modules/.bin/gulp"
+    "dev": "./node_modules/.bin/gulp",
+    "sass": "sass --watch ./src/style.scss ./public/stylesheets/app.css"
   },
   "dependencies": {
     "config": "^3.3.6",

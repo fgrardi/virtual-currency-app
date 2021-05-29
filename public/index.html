@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Currency</title>
-    <link rel="stylesheet" href="./cssminify/reset.css">
-    <link rel="stylesheet" href="./cssminify/style.css">
+    <link rel="stylesheet" href="./stylesheets/reset.css">
+    <link rel="stylesheet" href="./stylesheets/app.css">
 </head>
 <body>
     <script >
@@ -18,26 +18,26 @@
 
     <h1 class="heading">Virtual Pay</h1>
 
-    <div class="balance--box">
-        <h2 class="heading--secundary balance--head">Current balance</p>
-        <div class="balance--currentBalance">810.00</div>
+    <div class="balance">
+        <h2 class="heading--secundary balance__subtitle">Current balance</p>
+        <div class="balance__amount">810.00</div>
     </div>
 
     <div>
         <h3 class="heading--secundary">Recent transactions</h3>
-        <div id="list" class="transactions--box">
-                <ul class="transactions--list">
-                    <li class="transaction transactions--name">Name</li>
-                    <li class="transaction transactions--amount">Amount</li>
-                    <li class="transaction transactions--date">Date</li>
+        <div id="list" class="transactions">
+                <ul class="transactions__list">
+                    <li class="transaction transaction__name">Name</li>
+                    <li class="transaction transaction__amount">Amount</li>
+                    <li class="transaction transaction__date">Date</li>
                 </ul>
         </div>
     </div>
 
-    <nav class="navbar">
-        <a class="navbar--btn" href="index.html">Home</a>
-        <a class="navbar--btn" href="transactions.html">Send</a>
-        <a class="navbar--btn" href="">User</a>
+    <nav class="nav">
+        <a class="nav__text" href="index.html">Home</a>
+        <a class="nav__text" href="transactions.html">Send</a>
+        <a class="nav__text" href="">User</a>
     </nav>
 
     <script src="js/transactionslist.js"></script>

@@ -5,53 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="./cssminify/reset.css">
-    <link rel="stylesheet" href="./cssminify/style.css">
+    <link rel="stylesheet" href="./stylesheets/reset.css">
+    <link rel="stylesheet" href="./stylesheets/app.css">
 </head>
 <body>
     <h1 class="heading">Virtual Pay</h1>
-    
 
-    <div class="balance--send">
-        <h2 class="heading--secundary balance--head">Current balance</p>
-        <div class="balance--currentBalance">810.00</div>
+    <div class="balance">
+        <h2 class="heading--secundary balance__subtitle">Current balance</p>
+        <div class="balance__amount">810.00</div>
     </div>
     
     <div>
         <h1 class="heading heading--primary">Send coins</h1>
         <div class="alert alert__fail hidden">Something went wrong!</div>
     <div class="transaction">
-        <div class="input--field">
-            <input type="text" placeholder="Username" class="input--text" name="username" id="username">
+        <div class="form">
+            <input type="text" placeholder="Username" class="form__input" name="username" id="username">
             <div id="userList"></div>
         </div>
 
-        <div class="input--field">
-            <input type="number" placeholder="Number of coins" class="input--text" name="coins" id="coins">
-        </div>
+        <input type="number" placeholder="Number of coins" class="form__input" name="coins" id="coins">
 
-        <div>
-            <select class="input--text" name="reason" id="reason">
-                <option value="input--text">What is the reason</option>
-                <option value="development--help">Development help</option>
-                <option value="design--help">Design help</option>
-                <option value="feedback">Feedback</option>
-                <option value="meeting--deadlines">Meeting deadlines</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-
-        <div class="input--field">
-            <input type="text" placeholder="Message" class="input--text" name="message" id="message">
-        </div>
+        <select class="form__input" name="reason" id="reason">
+            <option>What is the reason</option>
+            <option value="development--help">Development help</option>
+            <option value="design--help">Design help</option>
+            <option value="feedback">Feedback</option>
+            <option value="meeting--deadlines">Meeting deadlines</option>
+            <option value="other">Other</option>
+        </select>
+  
+        <input type="text" placeholder="Message" class="form__input" name="message" id="message">
         <button class="btn btn--primary login__btn">Send Coins</button>
     </div>
 </div>
 
-<nav class="navbar">
-    <a class="navbar--btn" href="index.html">Home</a>
-    <a class="navbar--btn" href="transactions.html">Send</a>
-    <a class="navbar--btn" href="">User</a>
+<nav class="nav">
+    <a class="nav__text" href="index.html">Home</a>
+    <a class="nav__text" href="transactions.html">Send</a>
+    <a class="nav__text" href="">User</a>
 </nav>
 
 <script src="js/transactions.js"></script>
