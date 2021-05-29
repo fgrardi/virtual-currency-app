@@ -24,7 +24,7 @@ const signup = async (req, res, next) => {
     });
     await user.setPassword(password);
     await user.save().then(async (result) => {
-        await nodemailer.sendConfirmationEmail(user.username, user.email, user.confirmationCode, hostname);
+        await nodemailer.sendConfirmationEmail(user.username, user.firstname, user.lastname, user.email, user.confirmationCode, hostname);
         res.json({
             "status": "success",
             "confirmationCode": result.confirmationCode
