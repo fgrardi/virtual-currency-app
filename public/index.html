@@ -56,15 +56,16 @@
     <script src="/primus/primus.js"></script>
     <script>
         const hostname = window.location.href.split('/').slice(0, 3).join('/');
-        console.log("primus client --> hostname:", hostname + "?token=" + token);
         var primus = new Primus(hostname + "?token=" + token, {
             reconnect: { max: Infinity, min: 500, retries: 10 }
         });
 
         primus.on('data', function message(data) {
             if (data["transaction"]) {
+                let username = sessionStorage.getItem('username');
                 let transaction = data["transaction"];
                 let transactionsElement = document.getElementById("list");
+                let balanceElement = document.querySelector(".balance__amount");
                 transactionsElement.innerHTML += 
                     `<ul class="list__item">
                             <li class"list__item--type"><img src="./assets/money-green.png"></img></li>
@@ -73,6 +74,11 @@
                             <li class="list__item--amount">${transaction.amount}</li>
                         </ul>`
                     ;
+                if (transaction.recipient === username) {
+                    balanceElement.innerHTML = parseInt(balanceElement.innerHTML) + transaction.amount;
+                } else {
+                    balanceElement.innerHTML = parseInt(balanceElement.innerHTML) - transaction.amount;
+                }
             }
         })
 

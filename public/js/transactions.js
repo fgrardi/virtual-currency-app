@@ -29,9 +29,6 @@ btnTransaction.addEventListener("click", (e) => {
     let token = sessionStorage.getItem('token');
     let username = sessionStorage.getItem('username');
 
-    console.log("[" + amount + "]");
-    console.log("[" + reason + "]");
-
     if(amount === "" || recipient === "" || reason === "What is the reason") {
         alertFail.classList.remove('hidden');
         alertSuccess.classList.add('hidden');
@@ -57,6 +54,9 @@ btnTransaction.addEventListener("click", (e) => {
     }).then(json => {
 
         if (json.status === "success") {
+            let balanceElement = document.querySelector(".balance__amount");
+            balanceElement.innerHTML = parseInt(balanceElement.innerHTML) - amount;
+
             alertSuccess.innerHTML = "Transfer succesful!";
             alertSuccess.classList.remove('hidden');
             alertFail.classList.add('hidden');

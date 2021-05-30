@@ -1,5 +1,4 @@
 window.addEventListener("load", function() {
-    console.log("load");
     let token = sessionStorage.getItem('token');
 
     fetch('/api/v1/transfers', {
@@ -11,7 +10,6 @@ window.addEventListener("load", function() {
     }).then(response => {
         return response.json();
     }).then(json => {
-        console.log(json, json.status, json.data);
         if (json.status === "success") {
             let username = sessionStorage.getItem('username');
 
