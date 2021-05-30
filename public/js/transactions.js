@@ -8,9 +8,11 @@ fetch('/users', {
     let users = json.users;
     let userOptionsHtml = "";
     let optionsUsers = document.getElementById("user_list");
-    users.forEach(user => {
-         userOptionsHtml += `<option>${user.username}</option>\n`
-    });
+    let username = sessionStorage.getItem('username');
+    users.filter(user => user.username !== username)
+         .forEach(user => {
+            userOptionsHtml += `<option>${user.username}</option>\n`
+        });
     optionsUsers.innerHTML = userOptionsHtml;
 });
 
