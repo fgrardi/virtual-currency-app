@@ -3,6 +3,7 @@ const passport = require('../passport/passport');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const nodemailer = require('../mailer/nodemailer.config');
+const transactions = require('./api/v1/transaction');
 
 const signup = async (req, res, next) => {
     let firstname = req.body.firstname;
@@ -36,8 +37,14 @@ const signup = async (req, res, next) => {
 };
 
 const confirm = async (req, res) => {
-    await User.findOne({ confirmationCode: req.query.code })
+    await User.findOne({ confirmationCode: req.query.code, status: "Pending" })
         .then(found => { 
+            if (!found) {
+                return res.json({
+                    "status": "error",
+                    "message": 'User not found or already Active'
+                });
+            }
             jwt.verify(req.query.code, config.get("jwt.secret"), async (err, decoded) => {
                 if (err) {
                   return res.json({
@@ -53,6 +60,7 @@ const confirm = async (req, res) => {
                     };
                 }
                 User.findOneAndUpdate({ confirmationCode: req.query.code }, {status: "Active"}, null, () => {
+                    transactions.createBaseTransaction(found.username, 500);
                     res.json({
                         "status": "success" 
                     });

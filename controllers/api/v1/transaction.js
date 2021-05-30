@@ -160,6 +160,26 @@ const getLeaderboard = (req, res) => {
     })
 }
 
+const createBaseTransaction = (username, amount) => {
+    const transaction = new Transaction({
+        amount: amount,
+        username: username,
+        recipient: username,
+        reason: "Start amount",
+        remark: "Initial free amount"
+    });    
+    transaction.save().then(async () => {
+        return {
+            "status": "success"
+        };
+    }).catch(error => {
+        return {
+            "status": "error",
+            "message": error
+        };
+    });
+}
+
 async function createLeaderboard() {
     leaderboard = {};
     let allDocs = await Transaction.find();
@@ -228,3 +248,4 @@ module.exports.getTransactions = getTransactions;
 module.exports.getTransactionById = getTransactionById;
 module.exports.getLeaderboard = getLeaderboard;
 module.exports.getBalance = getBalance;
+module.exports.createBaseTransaction = createBaseTransaction;
