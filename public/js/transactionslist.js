@@ -15,7 +15,7 @@ window.addEventListener("load", function() {
         if (json.status === "success") {
             let transactions = json.data.transactions;
             //console.log(transactions);
-            let transactionHtml;
+            let transactionHtml = "";
 
             transactions.forEach(element => {
                 transactionHtml += `
