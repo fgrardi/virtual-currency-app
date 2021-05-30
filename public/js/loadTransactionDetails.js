@@ -42,9 +42,17 @@ window.addEventListener("load", async function() {
             <li>Sender</li>
             <li>${fullUsername}</li>
         </ul>
+        <ul class="list__item list__item--details">
+            <li></li>
+            <li>${details.username}</li>
+        </ul>
         <ul class="list__item">
             <li>Recipient</li>
             <li>${fullRecipient}</li>
+        </ul>
+        <ul class="list__item list__item--details">
+            <li></li>
+            <li>${details.recipient}</li>
         </ul>
         <ul class="list__item">
             <li>Reason</li>

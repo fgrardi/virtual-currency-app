@@ -38,6 +38,13 @@
     color: colors.$buttonBlue;
 }
 
+.list__item--details {
+    font-size: 0.8em;
+    font-style: italic;
+    position: relative;
+    top: -10px;
+}
+
 li img {
     width: 20px;
 }
