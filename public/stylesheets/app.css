@@ -253,6 +253,12 @@ img.nav__image {
   margin-bottom: 15px;
 }
 
+.list__item--overflow {
+  width: 20px;
+  height: 30px;
+  overflow: hidden;
+}
+
 .list__item--header {
   font-weight: bolder;
   font-style: italic;

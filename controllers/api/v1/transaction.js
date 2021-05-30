@@ -217,8 +217,10 @@ async function createLeaderboard() {
 
     // sort array
     leaderboard = Object.entries(leaderboard).sort((a, b) => {
-        if (a[0] < b[0]) return -1
-        else if ((a[0] > b[0])) return 1
+        let amount1 = a[1].amount;
+        let amount2 = b[1].amount;
+        if (amount1 > amount2) return -1
+        else if ((amount1 < amount2)) return 1
         else return 0
     }).map(element => { return { "username": element[0], "amount": element[1] } } );
 
