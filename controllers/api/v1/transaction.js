@@ -2,18 +2,18 @@ const Transaction = require('../../../models/Transactions');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
-const createNewTransaction = (req, res) => {
+const createNewTransaction = async (req, res) => {
     const decodedToken = extractAndVerify(req);
     if (decodedToken.status !== "success") {
         return res.json(decodedToken);
     }
     const amount = req.body.amount;
-    const user = req.body.user;
+    const username = req.body.username;
     const recipient = req.body.recipient;
     const reason = req.body.reason;
     const remark = req.body.remark;
 
-    if (user !== decodedToken.decoded.username) {
+    if (username !== decodedToken.decoded.username) {
         return res.json({
             "status": "error",
             "message": "User inside token does not match transaction!"
@@ -22,18 +22,18 @@ const createNewTransaction = (req, res) => {
 
     const transaction = new Transaction({
         amount,
-        user,
+        username,
         recipient,
         reason,
         remark
     });
     
     transaction.save().then(async () => {
+        let leaderboard = await createLeaderboard();
+        sendTransactionToPrimus(transaction, leaderboard);
         res.json({
             "status": "success"
         });
-        let leaderboard = await createLeaderboard();
-        //primus.write({transaction: { user, recipient, amount }, leaderboard } );
     }).catch(error => {
         res.json({
             "status": "error",
@@ -41,6 +41,20 @@ const createNewTransaction = (req, res) => {
         })
     });
 };
+
+function sendTransactionToPrimus(transaction, leaderboard) {
+    primus.forEach(function (spark, id, connections) {
+        const decoded = decodeToken(spark.query.token);
+        const status = decoded.status;
+        if (decoded.status === "success") {
+            if ((decoded.decoded.username === transaction.username) ||
+                (decoded.decoded.username === transaction.recipient)) {
+                    spark.write({ transaction });
+            }
+        }
+    });
+    primus.write({ leaderboard } );
+}
 
 const getTransactions = (req, res) => {
     const decodedToken = extractAndVerify(req);
@@ -50,7 +64,7 @@ const getTransactions = (req, res) => {
 
     const username = decodedToken.decoded.username;
 
-    Transaction.find({$or:[{user: username},{recipient: username}]}, (err, docs) => {
+    Transaction.find({$or:[{username: username},{recipient: username}]}, (err, docs) => {
         if (!err) {
             res.json({
                 "status": "success",
@@ -84,7 +98,7 @@ const getTransactionById = (req, res) => {
             })
         }
         else {
-            if (transaction.user !== username) {
+            if (transaction.username !== username) {
                 res.json({
                     "status": "error",
                     "message": "Transaction not of user of token"
@@ -125,9 +139,7 @@ const getBalance = (req, res) => {
         else {
             res.json({
                 "status": "error",
-                "message": "couldn't calculate balance",
-                "message": error
-            })
+                "message": "couldn't calculate balance"            })
         }
     })
 };

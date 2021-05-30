@@ -55,7 +55,7 @@ btnTransaction.addEventListener("click", (e) => {
             'Authorization': token
         },
         body: JSON.stringify({
-            "user": username,
+            "username": username,
             "recipient": recipient,
             "amount": amount,
             "reason": reason,

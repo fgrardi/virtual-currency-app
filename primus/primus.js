@@ -1,14 +1,11 @@
 const Primus = require('primus');
 
 let go = (server) => {
-    let primus = new Primus(server, {});
+    let primus = new Primus(server, {transformer: 'websockets'});
     primus.on('connection', (spark) => {
-        console.log("Received Spark!");
-
-        spark.on('data', (data) => {
-            primus.write(data);
-        });
+        console.log("Received Connection!", spark.query.token);
     })
+    global.primus = primus;
 }
 
 module.exports.go = go;
