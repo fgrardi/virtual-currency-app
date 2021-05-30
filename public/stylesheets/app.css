@@ -78,9 +78,10 @@ img.nav__image {
 
 .balance {
   background-color: #e9e9e9;
-  padding: 4em;
+  padding: 30px 30px;
   border-radius: 1.5em;
   margin: 2em 0;
+  color: #0a2043;
 }
 
 .balance_bg {
@@ -90,8 +91,12 @@ img.nav__image {
   min-width: 200px;
 }
 
+.balance__username {
+  font-weight: bold;
+}
+
 .balance__amount {
-  font-size: 2.5em;
+  font-size: 4.5em;
   font-weight: bold;
   text-align: center;
   color: #0a2043;

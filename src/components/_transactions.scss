@@ -10,10 +10,11 @@
   }
 
   .balance{
-    background-color: colors.$boxColor;
-    padding: padding.$xxl;
+    background-color: colors.$boxColor ;
+    padding: 30px 30px;
     border-radius: padding.$large;
     margin: padding.$xl 0;
+    color: colors.$river;
   }
 
   .balance_bg {
@@ -21,6 +22,10 @@
     border-radius: padding.$small;
     margin: padding.$large 0;
     min-width: 200px;
+  }
+
+  .balance__username{
+    font-weight: bold;
   }
   
   .balance__amount{
