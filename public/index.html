@@ -22,17 +22,13 @@
         <h1 class="heading heading--primary">Recent transactions</h1>
         <div class="list">
             <ul class="list__item">
+                <li class="list__item--header">Type</li>
                 <li class="list__item--header">User</li>
                 <li class="list__item--header">Reason</li>
                 <li class="list__item--header">Amount</li>
             </ul>
         </div>
         <div id="list" class="list">
-                <!--<ul class="list__item">
-                    <li class="list__item--rank">Name</li>
-                    <li>Reason</li>
-                    <li class="list__item--amount">Amount</li>
-                </ul>-->
         </div>
     </div>
 
@@ -55,7 +51,18 @@
         });
 
         primus.on('data', function message(data) {
-            console.log('Received a new message from the server', data);
+            if (data["transaction"]) {
+                let transaction = data["transaction"];
+                let transactionsElement = document.getElementById("list");
+                transactionsElement.innerHTML += 
+                    `<ul class="list__item">
+                            <li class"list__item--type">I</li>
+                            <li class="">${transaction.recipient}</li>
+                            <li class="">${transaction.reason}</li>
+                            <li class="list__item--amount">${transaction.amount}</li>
+                        </ul>`
+                    ;
+            }
         })
 
 

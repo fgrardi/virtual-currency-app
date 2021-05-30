@@ -13,18 +13,24 @@ window.addEventListener("load", function() {
     }).then(json => {
         console.log(json, json.status, json.data);
         if (json.status === "success") {
+            let username = sessionStorage.getItem('username');
+
             let transactions = json.data.transactions;
-            //console.log(transactions);
             let transactionHtml = "";
 
             transactions.forEach(element => {
-                transactionHtml += `
-                <ul class="list__item">
-                <li class="">${element.recipient}</li>
-                <li class="">${element.reason}</li>
-                <li class="list__item--amount">${element.amount}</li>
-                </ul>
-                `;
+                let type = "O";
+                if (element.recipient === username) {
+                    type = "I";
+                }
+                transactionHtml += 
+                    `<ul class="list__item">
+                        <li class"list__item--type">${type}</li>
+                        <li class="">${element.recipient}</li>
+                        <li class="">${element.reason}</li>
+                        <li class="list__item--amount">${element.amount}</li>
+                    </ul>`
+                    ;
                 document.getElementById('list').innerHTML = transactionHtml;
             });
             
