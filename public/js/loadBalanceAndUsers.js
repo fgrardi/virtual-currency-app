@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", async function() {
     let token = sessionStorage.getItem("token");
     let username = sessionStorage.getItem("username");
 
@@ -16,8 +16,16 @@ window.addEventListener("load", function() {
         balanceElement.innerHTML = json.data.balance;
     });
 
-    let users = [];
-    fetch('/users', {
+    const users = await loadAllUsers();
+    let loginUser = users.filter(user => user.username === username);
+    if (loginUser) {
+        let balanceElement = document.querySelector(".balance__username");
+        balanceElement.innerHTML = loginUser[0].firstname + " " + loginUser[0].lastname;
+    }
+});
+
+async function loadAllUsers() {
+    return await fetch('/users', {
         method: "get",
         headers: { 
             'Content-Type': 'application/json'
@@ -26,13 +34,6 @@ window.addEventListener("load", function() {
     .then(response => {
         return response.json();
     }).then(json => {
-        console.log("users:", json)
-        users = json.users
-
-        let loginUser = users.filter(user => user.username === username);
-        if (loginUser) {
-            let balanceElement = document.querySelector(".balance__username");
-            balanceElement.innerHTML = loginUser[0].firstname + " " + loginUser[0].lastname;
-        }
+        return json.users
     });
-});
+}

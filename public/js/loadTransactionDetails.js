@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", async function() {
     let token = sessionStorage.getItem("token");
 
     // copied from stackoverflow
@@ -12,6 +12,7 @@ window.addEventListener("load", function() {
         }
     }
 
+    const users = await loadAllUsers();
     fetch('/api/v1/transfers/' + params.id, {
         method: "get",
         headers: { 
@@ -24,9 +25,12 @@ window.addEventListener("load", function() {
     }).then(json => {
         let detailsElement = document.querySelector("#details");
         let details = json.transaction;
-        console.log(json.transaction, detailsElement);
-        detailsElement.innerHTML = `
-        <ul class="list__item">
+        let fullUsername = getFullName(users, details.username);
+        let fullRecipient = getFullName(users, details.recipient);
+
+        // console.log(json.transaction, detailsElement);
+        detailsElement.innerHTML = 
+        `<ul class="list__item">
             <li>ID</li>
             <li>${details._id}</li>
         </ul>
@@ -35,13 +39,30 @@ window.addEventListener("load", function() {
             <li>${details.amount}</li>
         </ul>
         <ul class="list__item">
-            <li>Username</li>
-            <li>${details.username}</li>
+            <li>Sender</li>
+            <li>${fullUsername}</li>
         </ul>
         <ul class="list__item">
             <li>Recipient</li>
-            <li>${details.recipient}</li>
+            <li>${fullRecipient}</li>
+        </ul>
+        <ul class="list__item">
+            <li>Reason</li>
+            <li>${details.reason}</li>
+        </ul>
+        <ul class="list__item">
+            <li>Remark</li>
+            <li>${details.remark}</li>
         </ul>`;
     });
 
 });
+
+function getFullName(users, name){
+    let detailsUser = users.filter(user => user.username === name);
+    let detailsUserString = "?";
+    if (detailsUser) {
+        detailsUserString = detailsUser[0].firstname + " " + detailsUser[0].lastname;
+    }
+    return detailsUserString;
+};
