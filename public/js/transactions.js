@@ -63,15 +63,16 @@ btnSignup.addEventListener("click", (e) => {
         return response.json();
         
     }).then(json => {
+        let alertSuccess = document.querySelector(".alert--success");
+        let alertFail = document.querySelector(".alert--fail");
+
         if (json.status === "success") {
-            let feedback = document.querySelector(".alert__fail");
-            feedback.textContent = "Transfer succesful!";
-            feedback.classList.remove('hidden');
+            alertSuccess.innerHTML = "Transfer succesful!";
+            alertSuccess.classList.remove('hidden');
         }
         else{
-            let feedback = document.querySelector(".alert__fail");
-            feedback.textContent = "Something went wrong!";
-            feedback.classList.remove('hidden');
+            alertFail.innerHTML = "Something went wrong!";
+            alertFail.classList.remove('hidden');
         }
     })
 });
