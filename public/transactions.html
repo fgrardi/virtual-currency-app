@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="./cssminify/reset.css">
-    <link rel="stylesheet" href="./cssminify/app.css">
+    <link rel="stylesheet" href="./stylesheets/reset.css">
+    <link rel="stylesheet" href="./stylesheets/app.css">
 </head>
 <body>
     <script src="./js/validateUser.js"></script>
@@ -50,9 +50,18 @@
 </div>
 
 <nav class="nav">
-    <a class="nav__text" href="index.html">Home</a>
-    <a class="nav__text" href="transactions.html">Send</a>
-    <a class="nav__text" href="">Log out</a>
+    <div class="nav__item">
+        <img class="nav__image" src="./assets/home.png" alt="home-icon">
+        <a class="nav__text" href="index.html">Home</a>
+    </div>
+    <div class="nav__item">
+        <img class="nav__image" src="./assets/send.png" alt="home-icon">
+        <a class="nav__text" href="transactions.html">Send</a>
+    </div>
+    <div class="nav__item">
+        <img  class="nav__image" src="./assets/logout.png" alt="home-icon">
+        <a class="nav__text" href="">Log out</a>
+    </div>
 </nav>
 
 <script src="js/transactions.js"></script>
