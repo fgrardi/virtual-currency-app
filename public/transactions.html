@@ -22,8 +22,13 @@
         <div class="alert alert--fail hidden">Something went wrong!</div>
     <div class="transaction">
         <div class="form">
-            <input type="text" placeholder="Recipient" class="form__input" name="recipient" id="recipient">
-            <div id="userList"></div>
+            <input type="text" placeholder="Recipient" class="form__input" name="recipient" id="recipient" list="user_list">
+            <datalist id="user_list">
+                <!-- <option>username1</option>
+                <option>username2</option>
+                <option>username3</option>
+                <option>username4</option> -->
+            </datalist>
         </div>
 
         <input type="number" placeholder="Number of coins" class="form__input" name="coins" id="coins">
