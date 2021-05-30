@@ -234,6 +234,12 @@
   margin-bottom: 15px;
 }
 
+.list__item--header {
+  font-weight: bolder;
+  font-style: italic;
+  color: #0A2044;
+}
+
 .list__item--rank {
   font-weight: bolder;
 }

@@ -18,16 +18,16 @@ window.addEventListener("load", function() {
             let transactionHtml;
 
             transactions.forEach(element => {
-                console.log(element);
-                transactionHtml = transactionHtml + `
-                <ul class="transactions--list">
-                <li class="transaction transactions--name">${element.recipient}</li>
-                <li class="transaction transactions--amount">${element.amount}</li>
-                <li class="transaction transactions--date">${element.reason}</li>
+                transactionHtml += `
+                <ul class="list__item">
+                <li class="">${element.recipient}</li>
+                <li class="">${element.reason}</li>
+                <li class="list__item--amount">${element.amount}</li>
                 </ul>
-                `
+                `;
+                document.getElementById('list').innerHTML = transactionHtml;
             });
-            this.document.getElementById('list').innerHTML = transactionHtml;
+            
         } 
     })
 });

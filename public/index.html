@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Currency</title>
     <link rel="stylesheet" href="./cssminify/reset.css">
-    <link rel="stylesheet" href="./cssminify/app.css">
+    <link rel="stylesheet" href="./stylesheets/app.css">
 </head>
 <body>
     <script >
@@ -24,13 +24,20 @@
     </div>
 
     <div>
-        <h3 class="heading--secundary">Recent transactions</h3>
-        <div id="list" class="transactions">
-                <ul class="transactions__list">
-                    <li class="transaction transaction__name">Name</li>
-                    <li class="transaction transaction__amount">Amount</li>
-                    <li class="transaction transaction__date">Date</li>
-                </ul>
+        <h1 class="heading heading--primary">Recent transactions</h1>
+        <div class="list">
+            <ul class="list__item">
+                <li class="list__item--header">User</li>
+                <li class="list__item--header">Reason</li>
+                <li class="list__item--header">Amount</li>
+            </ul>
+        </div>
+        <div id="list" class="list">
+                <!--<ul class="list__item">
+                    <li class="list__item--rank">Name</li>
+                    <li>Reason</li>
+                    <li class="list__item--amount">Amount</li>
+                </ul>-->
         </div>
     </div>
 
