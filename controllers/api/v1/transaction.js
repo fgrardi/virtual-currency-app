@@ -20,26 +20,36 @@ const createNewTransaction = async (req, res) => {
         })
     }
 
-    const transaction = new Transaction({
-        amount,
-        username,
-        recipient,
-        reason,
-        remark
-    });
-    
-    transaction.save().then(async () => {
-        let leaderboard = await createLeaderboard();
-        sendTransactionToPrimus(transaction, leaderboard);
-        res.json({
-            "status": "success"
+    let balance = await getBalanceForUsername(username);
+    // console.log("balance of user", balance)
+    if (balance >= amount) {
+        const transaction = new Transaction({
+            amount,
+            username,
+            recipient,
+            reason,
+            remark
         });
-    }).catch(error => {
+        
+        transaction.save().then(async () => {
+            let leaderboard = await createLeaderboard();
+            sendTransactionToPrimus(transaction, leaderboard);
+            res.json({
+                "status": "success"
+            });
+        }).catch(error => {
+            res.json({
+                "status": "error",
+                "message": error
+            })
+        });    
+    } else {
         res.json({
             "status": "error",
-            "message": error
+            "message": "Not enough coins (" + balance + ")"
         })
-    });
+    }
+    
 };
 
 function sendTransactionToPrimus(transaction, leaderboard) {
@@ -119,30 +129,36 @@ const getBalance = (req, res) => {
         res.json(decodedToken);
     }
     const username = decodedToken.decoded.username;
-    Transaction.find({$or:[{user: username},{recipient: username}]}, (err, docs) => {
-        if (!err) {
-            let balance = 0;
-            docs.forEach(doc => {
-                if (doc.recipient === username) {
-                    balance += doc.amount;
-                } else {
-                    balance -= doc.amount;
-                }
-            });
-            res.json({
-                "status": "success",
-                "data": {
-                    "balance": balance
-                }
-            })
-        }
-        else {
-            res.json({
-                "status": "error",
-                "message": "couldn't calculate balance"            })
-        }
-    })
+    const balanceResult = getBalanceForUsername(username);
+    balanceResult
+        .then(balance => res.json({ 
+                                "status": "success",
+                                "data": {
+                                    "balance": balance
+                                }
+                            }))
+        .catch(error => res.json({
+                                "status": "error",
+                                "message": error
+                            }));
+
 };
+
+async function getBalanceForUsername(username) {
+    let transactions = await Transaction.find({$or:[{username: username},{recipient: username}]});
+
+    // console.log("all:", transactions)
+    let balance = 0;
+    transactions.forEach(transaction => {
+        // console.log("single:", transaction)
+        if (transaction.recipient === username) {
+            balance += transaction.amount;
+        } else {
+            balance -= transaction.amount;
+        }
+    }); 
+    return balance;
+}
 
 const getLeaderboard = (req, res) => {
     let leaderboard = createLeaderboard();
@@ -183,12 +199,19 @@ const createBaseTransaction = (username, amount) => {
 async function createLeaderboard() {
     leaderboard = {};
     let allDocs = await Transaction.find();
+
     allDocs.forEach(doc => {
-        let el = leaderboard[doc.recipient];
-        if (!el) {
+        let recipientTotal = leaderboard[doc.recipient];
+        if (!recipientTotal) {
             leaderboard[doc.recipient] = doc.amount;
         } else {
-            leaderboard[doc.recipient] = el + doc.amount;
+            leaderboard[doc.recipient] = recipientTotal + doc.amount;
+        }
+        if (doc.username !== doc.recipient) {
+            let usernameTotal = leaderboard[doc.username];
+            if (usernameTotal) {
+                leaderboard[doc.username] = usernameTotal - doc.amount;
+            }
         }
     })
 
@@ -197,7 +220,7 @@ async function createLeaderboard() {
         if (a[0] < b[0]) return -1
         else if ((a[0] > b[0])) return 1
         else return 0
-    }).map(element => { return { "name": element[0], "amount": element[1] } } );
+    }).map(element => { return { "username": element[0], "amount": element[1] } } );
 
     return leaderboard;
 }

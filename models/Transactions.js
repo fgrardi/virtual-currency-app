@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const transactionSchema = new Schema({
     remark: String,
     amount: Number,
-    user: String,
+    username: String,
     recipient: String,
     reason: String
 });
