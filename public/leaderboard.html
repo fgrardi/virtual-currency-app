@@ -9,8 +9,9 @@
     <title>Leaderboard</title>
 </head>
 <body>
-    <h1 class="heading">Virtual Pay</h1>
+    <script src="./js/validateUser.js"></script>
 
+    <h1 class="heading">Virtual Pay</h1>
     <div>
         <a href="./index.html" class="btn--link">Back</a>
     </div>
@@ -33,6 +34,20 @@
         <a class="nav__text" href="">Log out</a>
     </nav>
 
+    <script src="/primus/primus.js"></script>
+    <script>
+        const hostname = window.location.href.split('/').slice(0, 3).join('/');
+        console.log("primus client --> hostname:", hostname + "?token=" + token);
+        var primus = new Primus(hostname + "?token=" + token, {
+            reconnect: { max: Infinity, min: 500, retries: 10 }
+        });
+
+        primus.on('data', function message(data) {
+            console.log('Received a new message from the server', data);
+        })
+
+
+    </script>
     <script src="./js/leaderboard.js"></script>
 </body>
 </html>
