@@ -229,7 +229,7 @@ img.nav__image {
 
 .list {
   height: 100%;
-  width: 90%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -261,6 +261,10 @@ img.nav__image {
 .list__item--amount {
   font-weight: bolder;
   color: #1D32F3;
+}
+
+li img {
+  width: 20px;
 }
 
 body {

@@ -19,9 +19,9 @@ window.addEventListener("load", function() {
             let transactionHtml = "";
 
             transactions.forEach(element => {
-                let type = "O";
+                let type = '<img src="./assets/money-red.png"></img>';
                 if (element.recipient === username) {
-                    type = "I";
+                    type = '<img src="./assets/money-green.png"></img>';
                 }
                 transactionHtml += 
                     `<ul class="list__item">

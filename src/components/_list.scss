@@ -4,7 +4,7 @@
 
 .list {
     height: 100%;
-    width: 90%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -36,4 +36,8 @@
 .list__item--amount {
     font-weight: bolder;
     color: colors.$buttonBlue;
+}
+
+li img {
+    width: 20px;
 }
