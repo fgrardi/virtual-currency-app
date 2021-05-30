@@ -224,6 +224,10 @@
   margin-right: auto;
 }
 
+#list {
+  padding-bottom: 50px;
+}
+
 .list__item {
   width: 100%;
   display: flex;
