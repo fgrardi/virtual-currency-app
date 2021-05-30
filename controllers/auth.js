@@ -60,7 +60,7 @@ const confirm = async (req, res) => {
                     };
                 }
                 User.findOneAndUpdate({ confirmationCode: req.query.code }, {status: "Active"}, null, () => {
-                    transactions.createBaseTransaction(found.username, 500);
+                    transactions.createBaseTransaction(found.username, 100);
                     res.json({
                         "status": "success" 
                     });
