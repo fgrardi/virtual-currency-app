@@ -46,6 +46,7 @@ btnSignup.addEventListener("click", (e) => {
     let reason = document.querySelector('#reason').value;
     let message = document.querySelector('#message').value;
     let token = sessionStorage.getItem('token');
+    let username = sessionStorage.getItem('username');
     
     fetch('/api/v1/transfers', {
         method: "post",
@@ -54,6 +55,7 @@ btnSignup.addEventListener("click", (e) => {
             'Authorization': token
         },
         body: JSON.stringify({
+            "user": username,
             "recipient": recipient,
             "amount": amount,
             "reason": reason,

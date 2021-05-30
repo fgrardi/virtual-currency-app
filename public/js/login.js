@@ -21,6 +21,7 @@ btnLogin.addEventListener("click", (e) => {
         if (json.status === "success") {
             let token = json.data.token;
             sessionStorage.setItem("token", token);
+            sessionStorage.setItem("username", username);
             window.location.href = "index.html";
         } else {
             let feedback = document.querySelector(".alert--fail");

@@ -14,7 +14,7 @@ function validateEmail(){
     console.log(emailValue);
     return (true)
   }
-    let feedback = document.querySelector(".alert__email");
+    let feedback = document.querySelector(".alert--email");
     feedback.textContent = "Invalid email: email must contain @student.thomasmore.be or @gmail.com!";
     feedback.classList.remove('hidden');
     return (false)
@@ -37,10 +37,18 @@ validateEmail();
         return response.json();
         
     }).then(json => {
+        let signupSuccess = document.querySelector(".alert--success");
+        let signupFail = document.querySelector(".alert--fail");
+
+        console.log(json);
         if (json.status === "success") {
-            let signupSuccess = document.querySelector(".alert--success");
-            signupSuccess.textContent = "Sign up complete! Check your email to activate your account.";
             signupSuccess.classList.remove('hidden');
+            signupFail.classList.add('hidden');
+        }
+        else {
+            signupFail.innerHTML = "Username already in use.";
+            signupFail.classList.remove('hidden');
+            signupSuccess.classList.add('hidden');
         }
     })
 });
