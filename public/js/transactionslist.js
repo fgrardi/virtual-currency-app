@@ -24,7 +24,7 @@ window.addEventListener("load", function() {
                     type = '<img src="./assets/money-green.png"></img>';
                 }
                 transactionHtml += 
-                    `<ul class="list__item">
+                    `<ul class="list__item" onclick="showDetails('${element._id}')">
                         <li class"list__item--type">${type}</li>
                         <li class="">${element.recipient}</li>
                         <li class="">${element.reason}</li>
@@ -37,3 +37,7 @@ window.addEventListener("load", function() {
         } 
     })
 });
+
+function showDetails(id) {
+    window.location.href = "transactiondetails.html?id=" + id;
+}

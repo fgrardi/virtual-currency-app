@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./stylesheets/reset.css">
+    <link rel="stylesheet" href="./stylesheets/app.css">
+</head>
+<body>
+    <script src="./js/validateUser.js"></script>
+    <script src="./js/loadBalanceAndUsers.js"></script>
+
+    <h1 class="heading">Virtual Pay</h1>
+
+    <div>
+        <a href="./index.html" class="btn--link">Back</a>
+    </div>
+
+    <div class="balance">
+        <div class="balance__amount">...</div>
+        <h2 class="balance__subtitle">Current balance of <span class="balance__username"></span></p>
+    </div>
+    
+    <div>
+        <h1 class="heading heading--primary">Transaction details</h1>
+        <div id="list" class="list">
+        </div>
+    </div>
+
+    <div id="details">
+    </div>
+</div>
+
+<nav class="nav">
+    <div class="nav__item">
+        <img class="nav__image" src="./assets/home.png" alt="home-icon">
+        <a class="nav__text" href="index.html">Home</a>
+    </div>
+    <div class="nav__item">
+        <img class="nav__image" src="./assets/send.png" alt="home-icon">
+        <a class="nav__text" href="transactions.html">Send</a>
+    </div>
+    <div class="nav__item">
+        <img  class="nav__image" src="./assets/logout.png" alt="home-icon">
+        <a class="nav__text" onclick="logout()" href="">Log out</a>
+    </div>
+</nav>
+
+<script src="./js/logout.js"></script>
+<script src="./js/loadTransactionDetails.js"></script>
+</body>
+</html>
