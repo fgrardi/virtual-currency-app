@@ -37,9 +37,9 @@ const matchList = document.getElementById('userList');
 // }
 // search.addEventListener('input', ()=> searchUser(search.value));
 
-var btnSignup = document.querySelector(".transaction button");
+var btnTransaction = document.querySelector(".transaction button");
 
-btnSignup.addEventListener("click", (e) => {
+btnTransaction.addEventListener("click", (e) => {
     console.log("click")
     let recipient = document.querySelector('#recipient').value;
     let amount = document.querySelector('#coins').value;
