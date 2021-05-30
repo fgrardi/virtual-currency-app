@@ -43,7 +43,11 @@
         });
 
         primus.on('data', function message(data) {
-            console.log('Received a new message from the server', data);
+            if (data["leaderboard"]) {
+                let leaderboard = data["leaderboard"];
+                let boardElement = document.querySelector('.list');
+                boardElement.innerHTML = createLeaderboardHtml(leaderboard);
+            }
         })
 
 

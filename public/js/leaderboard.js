@@ -18,24 +18,28 @@ window.addEventListener("load", (e) => {
         console.log(json);
         if(json.status === "success") {
             let leaderboard = json.leaderboard;
-            let rankingList;
-            let ranking = 1;
-
-            leaderboard.forEach(element => {
-                let username = element.username;
-                let amount = element.amount;
-
-                rankingList =
-                `<div class="list__item">
-                    <div class="list__item--rank">${ranking}</div>
-                    <div class="list__item--name">${username}</div>
-                    <div class="list__item--amount">${amount} Coins</div>
-                </div>
-                <hr class="list__hr">`
-                leaderboardGrid.innerHTML += rankingList;
-                ranking ++;
-            })
+            leaderboardGrid.innerHTML = createLeaderboardHtml(leaderboard);
         }
     })
 
 })
+
+function createLeaderboardHtml(leaderboard) {
+    let rankingList = '';
+    let ranking = 1;
+
+    leaderboard.forEach(element => {
+        let username = element.username;
+        let amount = element.amount;
+
+        rankingList +=
+            `<div class="list__item">
+                <div class="list__item--rank">${ranking}</div>
+                <div class="list__item--name">${username}</div>
+                <div class="list__item--amount">${amount} Coins</div>
+            </div>
+            <hr class="list__hr">`
+        ranking ++;
+    })
+    return rankingList;
+}
