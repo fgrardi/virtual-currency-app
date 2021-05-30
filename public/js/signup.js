@@ -11,11 +11,11 @@ function validateEmail(){
     let splitArray = emailValue.split('@');
     if (allowedDomain.indexOf(splitArray[1]) >=0)
   {
-      console.log(emailValue);
+    console.log(emailValue);
     return (true)
   }
     let feedback = document.querySelector(".alert__email");
-    feedback.textContent = "Invalid email: email must contain @student.thomasmore.be!";
+    feedback.textContent = "Invalid email: email must contain @student.thomasmore.be or @gmail.com!";
     feedback.classList.remove('hidden');
     return (false)
 }
@@ -38,9 +38,9 @@ validateEmail();
         
     }).then(json => {
         if (json.status === "success") {
-            let feedback = document.querySelector(".alert__fail");
-            feedback.textContent = "Sign up complete!";
-            feedback.classList.remove('hidden');
+            let signupSuccess = document.querySelector(".alert--success");
+            signupSuccess.textContent = "Sign up complete! Check your email to activate your account.";
+            signupSuccess.classList.remove('hidden');
         }
     })
 });

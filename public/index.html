@@ -10,7 +10,7 @@
 </head>
 <body>
     <script >
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         if(!token) {
             window.location.href = "login.html";
         }

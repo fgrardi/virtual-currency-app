@@ -1,6 +1,6 @@
 window.addEventListener("load", function() {
     console.log("load");
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
 
     fetch('/api/v1/transfers', {
         method: "get",

@@ -1,4 +1,4 @@
-const search = document.getElementById('username');
+const search = document.getElementById('recipient');
 const matchList = document.getElementById('userList');
 
 // autocomplete username
@@ -41,11 +41,11 @@ var btnSignup = document.querySelector(".transaction button");
 
 btnSignup.addEventListener("click", (e) => {
     console.log("click")
-    let username = document.querySelector('#username').value;
+    let recipient = document.querySelector('#recipient').value;
     let amount = document.querySelector('#coins').value;
     let reason = document.querySelector('#reason').value;
     let message = document.querySelector('#message').value;
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
     
     fetch('/api/v1/transfers', {
         method: "post",
@@ -54,7 +54,7 @@ btnSignup.addEventListener("click", (e) => {
             'Authorization': token
         },
         body: JSON.stringify({
-            "username": username,
+            "recipient": recipient,
             "amount": amount,
             "reason": reason,
             "message": message
